@@ -3,13 +3,52 @@
 <html>
 
 <head>
-
-
+    <link rel="stylesheet" href="style.css">
+    
 </head>
 
 <body>
 
-    <h1>Fading Metronome</h1>
+    <div class="grid-container">
+        <div class="grid-title">
+            <h1>Random Metronome</h1>
+        </div>
+        <div class="grid-bar">
+            <p>BAR</p>
+        </div>
+        <div class="grid-item grid-play">
+
+            <p id="speed" class="speeddisplay">60</p>
+            <p id="beatsdisplay"></p>
+            <p id="beatsplayeddisplay"></p>
+
+            <label for="quantity">BPM</label>
+            <input type="number" id="quantity" name="quantity">
+
+            <button onclick="start()">Play</button>
+            <button onclick="stop()">Stop</button>
+            <br>
+
+            <p id="error"></p>
+
+        </div>
+        <div class="grid-item grid-options">
+            
+            
+            <label for="subds">subdivisions:</label>
+            <select name="subds" id="sdv">
+                <option value="4">4</option>
+                <option value="8">8</option>
+                <option value="16">16</option>
+                
+            </select>
+            <br><br>
+            
+                
+                
+        </div>
+    </div>
+
 
     <audio id="myAudio">
 
@@ -17,30 +56,10 @@
         Your browser does not support the audio element.
     </audio>
 
-    <p id="speed" style=" font-size: 30px; margin-left: 30px;">60</p>
-    <p id="beatsdisplay"></p>
-    <p id="beatsplayeddisplay"></p>
-
-    
-
-
-    <label for="quantity">BPM</label>
-    <input type="number" id="quantity" name="quantity" >
-
-    <button onclick="start()">Play</button>
-    <button onclick="stop()">Stop</button>
-    <br>
-
-
-
-    <p id="error"></p>
-
-
-
     <script src="./playing funs.js"></script>
     <script src="./validation.js"></script>
     <script src="./bars.js"></script>
-
+    <script src="./style.css"></script>
 </body>
 
 </html>

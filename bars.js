@@ -1,7 +1,7 @@
 
 
 
-let bar = [1, 1, 1, 1]
+let bar = [ 1, 1, 1, 1 ]
 let current = bar[0]
 let ind = 0
 
