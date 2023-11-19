@@ -7,49 +7,46 @@ let subdint;
 let sound = document.getElementById("myAudio");
 let pauset;
 
-function checkTick() {
+let tick1 = 'tick.mp3'
 
-    if (current == 1) {
-        playTick()
-    }
-    else {
-        console.log('mute')
-    }
-    ind = (ind + 1) % bar.length  // 4%4 = 0 
-    current = bar[ind]
-}
 
-function playTick() {
-
-    sound.load()
-    sound.play();
-    //console.log('tick')
-}
 
 function playAudio() {
-    checkTick()
-    /* sound.play() */
-    setTimeout(function () { sound.pause() }, pauset)
+    if (current == 1) {
+        new Audio('tick.mp3').play();
+    }
+    toNext()
 }
 
-function pauseTiming(){
+function toNext() {
 
-    pauset = interval - 30
+    ind = (ind + 1) % bar.length  // 4%4 = 0 
+    current = bar[ind]
+
+    console.log('Next')
 }
+
 
 function setSpeed() {
     currentSpeed = document.getElementById('quantity').valueAsNumber
-    valid = valSpeed(currentSpeed)
-    console.log('currentSpeed', currentSpeed)
-    if(valid){
-        document.getElementById('speed').innerHTML = currentSpeed
+
+    if (!currentSpeed){
+        currentSpeed = document.getElementById('speed').textContent
+    }else{
+
+        valid = valSpeed(currentSpeed)
+        if(valid){
+            document.getElementById('speed').innerHTML = currentSpeed
+        }
     }
+    
+    console.log('currentSpeed', currentSpeed)
+    
 }
 
 function calculateInterval() {
     interval = 1000 / (currentSpeed / 60)
 }
-
 
 // equals intervals
 function playLoop() {
@@ -66,7 +63,6 @@ function start() {
     restoreFirst()
     setSpeed()
     calculateInterval()
-    pauseTiming()
     setSubd()
     playLoop()
 }
@@ -104,3 +100,24 @@ setInterval(function () { playprova() }, 125)
 
 
 
+/* // Create a new Date object
+var currentDate = new Date();
+
+// Get the current time
+var currentTime = currentDate.toLocaleTimeString();
+
+// Display the current time
+console.log("Current time: " + currentTime);
+ */
+
+
+
+
+/* let t1 = new Date();
+toNext()
+let t2 = new Date();
+
+let diff = t2 -t1
+
+
+console.log(diff) */
