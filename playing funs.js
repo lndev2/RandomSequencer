@@ -21,14 +21,14 @@ function playAudio() {
 
 function toNext() {
 
-    ind = (ind + 1) % lenBar  // 4%4 = 0 
+    ind = (ind + 1) % lenBar  
     current = bar[ind]
     console.log('Next')
 }
 
 // equals intervals
 function playLoop() {
-    clearInterval(loop)
+    
     loop = setInterval(function () { 
         document.getElementById(ind).className = 'tick-off tick-played'
         
@@ -37,8 +37,6 @@ function playLoop() {
         toNext()
         
         setTimeout(function(){document.getElementById(previous).className = 'tick-off'},interval)
-        
-        
         
         
     
@@ -72,28 +70,44 @@ function setSubd (){
     console.log('subdivisions',subd)
     interval = interval / (subd/4)
 
+    
+
+    return subd
 }
 
 
 function restoreFirst() {
-    document.getElementById(ind).className = 'tick-off'
+    clearInterval(loop)
+    restoreButtons()
     current = bar[0]
     ind = 0
+}
+
+function restoreButtons(){
+    let colored = document.getElementsByClassName('tick-played tick-off')
+
+    for( i=0; i<colored.length; i++){
+        
+        colored[i].className = 'tick-off'
+    }
+
 }
 
 function start() {
     restoreFirst()
     setSpeed()
     calculateInterval()
-    setSubd()
+    
+    original_bar = [1,1,1,1]
+    
+    
+    let subd = setSubd()
+    displaySubds(subd)
     lenBar = bar.length
     playLoop()
 }
 
 function stop() {
-
-    
-
     restoreFirst()
     clearInterval(loop);
 }

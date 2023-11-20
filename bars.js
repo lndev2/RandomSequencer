@@ -4,6 +4,8 @@ let ind = 0
 
 
 function generateBar(len){
+
+    
     bar = []
     
     let tab = document.createElement('table')
@@ -40,9 +42,13 @@ function displaybar(tab){
     
 }
 
+function displaySubds(subd) {
+    
+    let newLen = original_bar.length * (subd/4)
+    generateBar(newLen)
 
-function changeButtonColor(){
-    document.getElementById(ind).className = 'tick-button tick-played'
 }
+
+
 
 
