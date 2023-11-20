@@ -1,7 +1,4 @@
-
-
-
-let bar = [ 1, 1, 1, 1 ]
+generateBar(4)
 let current = bar[0]
 let ind = 0
 
@@ -21,7 +18,7 @@ function generateBar(len){
         let cell = document.createElement('td')
         let button = document.createElement('button')
         button.id = i
-        button.className = 'tick-button' 
+        button.className = 'tick-off' 
         button.innerText = i+1
         //bt.onclick ....
 
@@ -44,7 +41,8 @@ function displaybar(tab){
 }
 
 
-
-
+function changeButtonColor(){
+    document.getElementById(ind).className = 'tick-button tick-played'
+}
 
 

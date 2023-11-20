@@ -14,23 +14,35 @@ let tick1 = 'tick.mp3'
 function playAudio() {
 
     if (current == 1) {
-        new Audio('tick.mp3').play();
+        new Audio('tick.mp3').play();    
     }
-    toNext()
+    
 }
 
 function toNext() {
 
     ind = (ind + 1) % lenBar  // 4%4 = 0 
     current = bar[ind]
-
     console.log('Next')
 }
 
 // equals intervals
 function playLoop() {
     clearInterval(loop)
-    loop = setInterval(function () { playAudio() }, interval)
+    loop = setInterval(function () { 
+        document.getElementById(ind).className = 'tick-off tick-played'
+        
+        playAudio()
+        let previous = ind
+        toNext()
+        
+        setTimeout(function(){document.getElementById(previous).className = 'tick-off'},interval)
+        
+        
+        
+        
+    
+    }, interval)
 }
 
 
@@ -64,6 +76,7 @@ function setSubd (){
 
 
 function restoreFirst() {
+    document.getElementById(ind).className = 'tick-off'
     current = bar[0]
     ind = 0
 }
@@ -78,6 +91,9 @@ function start() {
 }
 
 function stop() {
+
+    
+
     restoreFirst()
     clearInterval(loop);
 }
