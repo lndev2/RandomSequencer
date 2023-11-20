@@ -12,6 +12,7 @@ let tick1 = 'tick.mp3'
 
 
 function playAudio() {
+
     if (current == 1) {
         new Audio('tick.mp3').play();
     }
@@ -26,10 +27,16 @@ function toNext() {
     console.log('Next')
 }
 
+// equals intervals
+function playLoop() {
+    clearInterval(loop)
+    loop = setInterval(function () { playAudio() }, interval)
+}
+
 
 function setSpeed() {
-    currentSpeed = document.getElementById('quantity').valueAsNumber
 
+    currentSpeed = document.getElementById('quantity').valueAsNumber
     if (!currentSpeed){
         currentSpeed = document.getElementById('speed').textContent
     }else{
@@ -48,11 +55,13 @@ function calculateInterval() {
     interval = 1000 / (currentSpeed / 60)
 }
 
-// equals intervals
-function playLoop() {
-    clearInterval(loop)
-    loop = setInterval(function () { playAudio() }, interval)
+function setSubd (){
+    let subd = document.getElementById('sdv').value
+    console.log('subdivisions',subd)
+    interval = interval / (subd/4)
+
 }
+
 
 function restoreFirst() {
     current = bar[0]
@@ -73,12 +82,6 @@ function stop() {
     clearInterval(loop);
 }
 
-function setSubd (){
-    let subd = document.getElementById('sdv').value
-    console.log('subdivisions',subd)
-    interval = interval / (subd/4)
-
-}
 
 
 
