@@ -5,28 +5,32 @@
 }
 
 .grid-title {
-    background-color: rgba(247, 181, 100, 0.8);   
+    background-color: rgba(32, 44, 108, 0.8);   
     grid-column: 1 / 3; 
-    font-size: 30px;
+    font-size: 20px;
     text-align: center;
-    font-family: 'Courier New', Courier, monospace;
-    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(255, 255, 255);
+    font-variant: small-caps;
 }
 
 .grid-bar {
     display: grid;
     grid-template-columns: auto;
-    background-color: rgba(97, 84, 69, 0.8);
+    background-color: rgba(172, 179, 184, 0.8);
     grid-column: 1 / 3;
-    font-size: 30px;
+    font-size: 15px;
     text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
 }
 
 .grid-item{
-    background-color: rgba(197, 187, 165, 0.8);
+    background-color: rgba(32, 44, 108, 0.8);
     border: 1px solid rgba(0, 0, 0, 0.8);
     font-size: 17px;
-    color: black
+    color: rgb(255, 255, 255);
+    font-family: Arial, Helvetica, sans-serif;
     
 }
 
@@ -58,7 +62,7 @@
     align-items: center;
     display: inline-block; /* Make it an inline-block element */
     padding: 10px ; /* Add some padding for better visibility */
-    background-color: rgba(197, 187, 165, 0.8);; /* Example background color */
+    background-color:  rgba(9, 25, 116, 0.8); /* Example background color */
     color: #ffffff; /* Example text color */
     text-decoration: none; /* Remove the default underline */
     border-radius: 5px; /* Optional: Add rounded corners */

@@ -3,11 +3,14 @@
 let currentSpeed = 60
 let interval = 1000
 let loop;
-let subdint;
 let sound = document.getElementById("myAudio");
-let pauset;
 let lenBar;
 let tick1 = 'tick.mp3'
+
+
+function simpleLoop(){
+    setInterval(function (){ new Audio('tick.mp3').play()  }, 250 )
+}
 
 
 
@@ -16,7 +19,7 @@ function playAudio() {
     if (current == 1) {
         new Audio('tick.mp3').play();    
     }
-    
+      
 }
 
 function playRandom(){
