@@ -19,6 +19,15 @@ function playAudio() {
     
 }
 
+function playRandom(){
+
+    let n = Math.floor(Math.random() * 2)
+    if (n ==1){
+        new Audio('tick.mp3').play();  
+    }
+    
+}
+
 function toNext() {
 
     ind = (ind + 1) % lenBar  
@@ -32,6 +41,7 @@ function playLoop() {
     loop = setInterval(function () { 
         document.getElementById(ind).className = 'tick-off tick-played'
         
+        //playRandom()
         playAudio()
         let previous = ind
         toNext()
