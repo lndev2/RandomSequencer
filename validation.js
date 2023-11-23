@@ -35,7 +35,7 @@ function CheckSpeed() {
         return false
     }
 
-    
+    document.getElementById('speed').innerText = currentSpeed
 
 
     }
