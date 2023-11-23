@@ -1,6 +1,5 @@
 
 
-let currentSpeed = 60
 let interval = 1000
 let loop;
 let sound = document.getElementById("myAudio");
@@ -57,22 +56,12 @@ function playLoop() {
 }
 
 
-function setSpeed() {
 
-    currentSpeed = document.getElementById('quantity').valueAsNumber
-    if (!currentSpeed){
-        currentSpeed = document.getElementById('speed').textContent
-    }else{
+    
+    
+    
+    
 
-        valid = valSpeed(currentSpeed)
-        if(valid){
-            document.getElementById('speed').innerHTML = currentSpeed
-        }
-    }
-    
-    console.log('currentSpeed', currentSpeed)
-    
-}
 
 function calculateInterval() {
     interval = 1000 / (currentSpeed / 60)
@@ -108,9 +97,13 @@ function restoreButtons(){
 
 function start() {
     restoreFirst()
-    setSpeed()
-    calculateInterval()
     
+    if (CheckSpeed() == false){
+        return
+    }
+    
+    calculateInterval()
+
     original_bar = [1,1,1,1]
     
     
@@ -118,7 +111,10 @@ function start() {
     displaySubds(subd)
     lenBar = bar.length
     playLoop()
-}
+
+    }
+
+   
 
 function stop() {
     restoreFirst()
