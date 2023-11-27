@@ -33,7 +33,7 @@ function loadDogSound(url) {
         }
         request.send();
     
-
+        
 }
 
 function onError(){
@@ -44,11 +44,19 @@ function onError(){
 //var context = new AudioContext();
 
 function playSound(buffer) {
+    console.log('dogBarkingBuffer2',dogBarkingBuffer)
     var source = context.createBufferSource(); // creates a sound source
-    source.buffer = buffer;                    // tell the source which sound to play
+    
+    console.log(source)
+    
+    source.buffer = buffer;   
+    console.log(source.buffer)                 // tell the source which sound to play
     source.connect(context.destination);       // connect the source to the context's destination (the speakers)
-    source.noteOn(0);                          // play the source now
+    console.log(source.noteOn)
+    source.start(0);                          // play the source now
 }
+
+
 
 
 
@@ -56,8 +64,15 @@ function playSound(buffer) {
 function main(){
     init()
     loadDogSound('tick.mp3')
-    console.log('dogBarkingBuffer',dogBarkingBuffer)
-    playSound(dogBarkingBuffer)
-
+    
+   // playSound(dogBarkingBuffer)
+    
 }
 
+
+
+
+function playbutton(){
+
+    playSound(dogBarkingBuffer)
+}
