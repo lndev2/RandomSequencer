@@ -68,9 +68,17 @@ function main(){
 
 
 
+
+
 function playbutton(){
 
 
     //console.log(response)
     playSound(dogBarkingBuffer)
 }
+
+
+
+/* setInterval(() => {playbutton()
+    
+}, 80); */
