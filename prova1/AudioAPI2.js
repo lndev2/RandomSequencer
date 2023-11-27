@@ -2,7 +2,6 @@
 let context
 
 
-
 function init() {
     try {
     context = new AudioContext();
@@ -13,9 +12,6 @@ function init() {
     }
 }
     
-
-
-
 
 
 let dogBarkingBuffer = null;
@@ -30,19 +26,19 @@ function loadDogSound(url) {
     request.onload = function() {
         console.log(request.response)
         context.decodeAudioData(request.response, function(buffer) {
+            //console.log('dogBarkingBuffer',dogBarkingBuffer)
             dogBarkingBuffer = buffer;
-            console.log(dogBarkingBuffer)
+            console.log('dogBarkingBuffer',dogBarkingBuffer)
         }, onError);
         }
         request.send();
     
 
-    
 }
 
-
-
-
+function onError(){
+    console.log('Failed decode')
+}
 
 
 //var context = new AudioContext();
@@ -56,10 +52,12 @@ function playSound(buffer) {
 
 
 
+
 function main(){
     init()
     loadDogSound('tick.mp3')
+    console.log('dogBarkingBuffer',dogBarkingBuffer)
     playSound(dogBarkingBuffer)
 
-
 }
+
