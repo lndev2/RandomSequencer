@@ -1,55 +1,44 @@
 
 let context
+let buffer = null;
 
-
-function init() {
+function initContext() {
     try {
-    context = new AudioContext();
-    console.log('ok')
+        context = new AudioContext();
+        console.log('ok')
     }
-    catch(e) {
-    alert('Web Audio API is not supported in this browser');
+    catch (e) {
+        alert('Web Audio API is not supported in this browser');
     }
 }
-    
 
 
-let dogBarkingBuffer = null;
-//var context = new AudioContext();
+async function loadSound(url) {
 
+    try {
 
-let response;
-async function loadDogSound(url) {
-    
-    try{
-    
-    response = await fetch(url)
-    let array = await response.arrayBuffer()
-    let AudioBuffer = await context.decodeAudioData(array)
-    dogBarkingBuffer = AudioBuffer
+        let response = await fetch(url)
+        let array = await response.arrayBuffer()
+        let AudioBuffer = await context.decodeAudioData(array)
+        buffer = AudioBuffer
 
-    }catch(e){console.log(e)}
-    
-}
+    } catch (e) { console.log(e) }
 
-function onError(){
-    console.log('Failed decode')
 }
 
 
-//var context = new AudioContext();
+
 
 function playSound(buffer) {
-    console.log('dogBarkingBuffer2',dogBarkingBuffer)
-    var source = context.createBufferSource(); // creates a sound source
-    
+    console.log('buffer', buffer)
+
+    var source = context.createBufferSource();
     console.log(source)
-    
-    source.buffer = buffer;   
-    console.log(source.buffer)                 // tell the source which sound to play
-    source.connect(context.destination);       // connect the source to the context's destination (the speakers)
+    source.buffer = buffer;
+    console.log(source.buffer)
+    source.connect(context.destination);
     console.log(source.noteOn)
-    source.start(0);                          // play the source now //noteOn(time) deprecated
+    source.start(0);
 }
 
 
@@ -57,12 +46,12 @@ function playSound(buffer) {
 
 
 
-function main(){
-    init()
-    loadDogSound('tick.mp3')
+function main() {
+    initContext()
+    loadSound('tick.mp3')
     
-   // playSound(dogBarkingBuffer)
-    
+
+
 }
 
 
@@ -70,15 +59,10 @@ function main(){
 
 
 
-function playbutton(){
+function playbutton() {
 
 
-    //console.log(response)
-    playSound(dogBarkingBuffer)
+
+    playSound(buffer)
 }
 
-
-
-/* setInterval(() => {playbutton()
-    
-}, 80); */
