@@ -1,7 +1,8 @@
 
 
 
-let sounds = ['Sounds\\tick.mp3', 
+let sounds = [
+    'Sounds\\tick.mp3', 
     'Sounds\\snare.mp3',
     'Sounds\\low-acoustic-snare-sound-a-key-07-X09.mp3']
 
@@ -23,7 +24,7 @@ async function loadAllSounds(){
 function selectSound(){
 
     let sound
-    if (ind%3 == 0){
+    if (ind%4 == 0){
         sound = buffers[1]
     }
     else{sound = buffers[2]}
