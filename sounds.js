@@ -23,7 +23,7 @@ async function loadAllSounds(){
 function selectSound(){
 
     let sound
-    if (ind%4 == 0){
+    if (ind%3 == 0){
         sound = buffers[1]
     }
     else{sound = buffers[2]}

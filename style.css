@@ -75,11 +75,15 @@
     width: 70px; /* Set the desired width */
     height: 35px; /* Set the desired height */
     font-size: 16px;
-    color: rgba(231, 130, 6, 0.8)
+    color: rgba(19, 18, 17, 0.8)
 
 
 }
 
 .tick-played {
     background-color: rgb(16, 198, 104)
+}
+
+.tick-current {
+    background-color: rgb(193, 183, 138)
 }

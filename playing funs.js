@@ -13,7 +13,8 @@ function playAudio() {
     let sound =selectSound()
 
     if (current == 1) {
-        playSound(sound);    
+        playSound(sound);  
+        document.getElementById(ind).className = 'tick-off tick-played'  
     }
       
 }
@@ -38,7 +39,7 @@ function toNext() {
 function playLoop() {
     
     loop = setInterval(function () { 
-        document.getElementById(ind).className = 'tick-off tick-played'
+        document.getElementById(ind).className = 'tick-off tick-current'
         
         //playRandom()
         playAudio()
