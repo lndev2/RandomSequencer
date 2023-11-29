@@ -4,19 +4,16 @@ let interval = 1000
 let loop;
 let sound = document.getElementById("myAudio");
 let lenBar;
-let tick1 = 'tick.mp3'
 
-
-function simpleLoop(){
-    setInterval(function (){ new Audio('tick.mp3').play()  }, 250 )
-}
 
 
 
 function playAudio() {
 
+    let sound =selectSound()
+
     if (current == 1) {
-        new Audio('tick.mp3').play();    
+        playSound(sound);    
     }
       
 }
@@ -57,12 +54,6 @@ function playLoop() {
 
 
 
-    
-    
-    
-    
-
-
 function calculateInterval() {
     interval = 1000 / (currentSpeed / 60)
 }
@@ -96,6 +87,9 @@ function restoreButtons(){
 }
 
 function start() {
+    
+    initContext()
+    loadAllSounds()
     restoreFirst()
     
     if (CheckSpeed() == false){
@@ -103,9 +97,7 @@ function start() {
     }
     
     calculateInterval()
-
     original_bar = [1,1,1,1]
-    
     
     let subd = setSubd()
     displaySubds(subd)
