@@ -49,7 +49,7 @@ function playSound(buffer) {
     console.log(source.buffer)                 // tell the source which sound to play
     source.connect(context.destination);       // connect the source to the context's destination (the speakers)
     console.log(source.noteOn)
-    source.start(0);                          // play the source now
+    source.start(0);                          // play the source now //noteOn(time) deprecated
 }
 
 
