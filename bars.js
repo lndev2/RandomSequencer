@@ -66,9 +66,9 @@ function generateBar(len){
 
 function barReplacement(tab){
 
-    let toRep = document.getElementById('childbar')
-    document.getElementById('bardiv').replaceChild(tab, toRep)
-    tab.id = 'childbar'
+    let bars = document.getElementById('bardiv').childNodes
+    document.getElementById('bardiv').replaceChildren(tab)
+    document.getElementById('bardiv').appendChild(document.createElement('br'))
     
 }
 
