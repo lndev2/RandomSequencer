@@ -7,7 +7,7 @@
 
 
 function setOriginalBar(){
-    original_bar_len = document.getElementById('beatsbar').
+    original_bar_len = document.getElementById('beatsbar').value
     console.log('ol',original_bar_len)
     return original_bar_len
 }
@@ -39,7 +39,7 @@ function generateBar(len){
 
     
     let tab = document.createElement('table')
-    tab.className = 'tab-class'
+    tab.className = 'bars'
 
     let row = document.createElement('tr')
     tab.appendChild(row)
@@ -60,7 +60,7 @@ function generateBar(len){
     }    
     
 
-    barReplacement(tab)
+    return tab
 }
 
 
@@ -73,8 +73,14 @@ function barReplacement(tab){
 }
 
 
+function barAdder(tab){
 
-function addPattern(){
+    document.getElementById('bardiv').appendChild(tab)
+    document.getElementById('bardiv').appendChild(document.createElement('br'))
+}
+
+
+function addPattern(add){
 
     let original_bar_len = setOriginalBar()
     console.log('original_bar_len',original_bar_len)
@@ -83,9 +89,13 @@ function addPattern(){
     let newlen = setSubdBar(original_bar_len,subdivisions)
     console.log('newlen',newlen)
     
+    let tab = generateBar(newlen)
     
-    
-    generateBar(newlen)
+    if (add == false){
+        barReplacement(tab)
+    }else{
+        barAdder(tab)
+    }
 
     let sound = document.getElementById('soundtype').value
     //let pattern = new SoundPattern(newlen,sound)

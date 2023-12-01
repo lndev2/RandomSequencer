@@ -16,7 +16,7 @@
         <div class="grid-bar">
             <p>BAR</p>
 
-            <div id = 'bardiv' >
+            <div id = 'bardiv' class="tab-container">
                 <div id='childbar'>
 
                 </div>
@@ -41,7 +41,7 @@
         <div class="grid-item grid-options">
             
             <label for="beatsbar">Beats/Bar</label>
-            <input type="string" id="beatsbar" name="quantity">
+            <input type="string" id="beatsbar" name="beatsbar">
 
             
             <br><br>
@@ -63,6 +63,8 @@
                 <option value="Sounds\cmaj7.mp3">Cmaj7</option>
             </select>
             <br><br>
+
+            <button id='genPattern' onclick="addPattern(add=true)">New Pattern</button>
                 
                 
         </div>
@@ -77,7 +79,7 @@
 
     <script src="./playing funs.js"></script>
     <script src="./validation.js"></script>
-    <script src="./Bars.js"></script>
+    <script src="./bars.js"></script>
     <script src="./AudioAPI2.js"></script>
     <script src="./sounds.js"></script>
     <script src="./style.css"></script>

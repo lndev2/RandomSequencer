@@ -58,16 +58,20 @@
 
 
 
-.tab-class {
-    align-items: center;
-    display: inline-block; /* Make it an inline-block element */
+.tab-container {
+    
+    display: grid; 
+    place-items: center;
     padding: 10px ; /* Add some padding for better visibility */
     background-color:  rgba(9, 25, 116, 0.8); /* Example background color */
     color: #ffffff; /* Example text color */
     text-decoration: none; /* Remove the default underline */
-    border-radius: 5px; /* Optional: Add rounded corners */
+    border-radius: 12px; /* Optional: Add rounded corners */
+}
 
-
+.bars{
+    
+    align-items: center;
 }
 
 .tick-off {
