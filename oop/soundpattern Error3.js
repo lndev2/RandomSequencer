@@ -1,33 +1,3 @@
-
-function setOriginalBar(){
-            
-    let startingLen = document.getElementById('beatsbar').value
-    return startingLen
-}
-
-function setSubdivisions(){
-
-    let subdivisions = document.getElementById('sdv').value 
-    //interval = interval / (subdivisions/4)
-    return subdivisions
-}
-
-function setSubdBar(startingLen,subdivisions) {
-
-    let len = startingLen * (subdivisions/4)
-    return len
-
-}
-
-function setTotalBeats(){
-
-    let startingLen = setOriginalBar()
-    let subdivisions = setSubdivisions()
-    let len = setSubdBar(startingLen,subdivisions)
-    return len
-
-}
-
 class SoundLine{
     constructor(sound){    
         this.time = 'duration'
@@ -39,19 +9,45 @@ class SoundLine{
 
 class SoundPattern{
 
-    constructor(sound,len){  
+    constructor(sound){  
         
         this.sound = sound  
-        this.len = len
+        this.original_bar_len = this.setOriginalBar()
+        this.subdivisions = this.setSubdivisions()
+        this.newlen = function setSubdBar() {
+
+            let len = this.original_bar_len * (this.subdivisions/4)
+            return len
+        }()
+        
         this.rythm = this.generateRythm()
         this.tab = this.generateBar() 
-        
+
     }
+
+    setOriginalBar(){
+                
+        let bar_len = document.getElementById('beatsbar').value
+        return bar_len
+    }
+
+    setSubdivisions (){
+
+        let subdivisions = document.getElementById('sdv').value 
+        //interval = interval / (subdivisions/4)
+        return subdivisions
+    }
+
+    /* setSubdBar() {
+
+        let len = this.original_bar_len * (this.subdivisions/4)
+        return len
+    } */
 
     generateRythm(){
 
         let rythm = []
-        for (let i=0; i<this.len; i++){
+        for (let i=0; i<this.newlen; i++){
             rythm.push(new SoundLine(sound))
         }
         return rythm
@@ -67,7 +63,7 @@ class SoundPattern{
         let row = document.createElement('tr')
         tab.appendChild(row)
     
-        for (let i=0;i<this.len;i++){
+        for (let i=0;i<this.newlen;i++){
             
     
             let cell = document.createElement('td')
@@ -87,6 +83,7 @@ class SoundPattern{
 
     barReplacement(tab){
 
+        let bars = document.getElementById('bardiv').childNodes
         document.getElementById('bardiv').replaceChildren(tab)
         document.getElementById('bardiv').appendChild(document.createElement('br'))
         
@@ -105,11 +102,11 @@ class SoundPattern{
 
 function x(){
 
-let len = setTotalBeats()
-console.log('len',len)
-p1 = new SoundPattern('x',len)
+p1 = new SoundPattern()
 console.log('p1',p1)
+console.log('p1.original_bar_len',p1.original_bar_len)
+console.log('p1.subdivisions',p1.subdivisions)
+console.log('p1.newLen',p1.newlen)
 console.log('p1.rythm',p1.rythm)
 console.log('p1.tab',p1.tab)
-barAdder(p1.tab)
 }
