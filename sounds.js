@@ -4,7 +4,10 @@
 let sounds = [
     'Sounds\\tick.mp3', 
     'Sounds\\snare.mp3',
-    'Sounds\\low-acoustic-snare-sound-a-key-07-X09.mp3']
+    'Sounds\\low-acoustic-snare-sound-a-key-07-X09.mp3',
+    'Sounds\\stinger-sound-cmaj7-chord-stab-12534.mp3',
+    'Sounds\\antiogmchord-107291.mp3'
+]
 
 let buffers = []
 

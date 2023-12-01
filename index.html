@@ -40,18 +40,29 @@
         </div>
         <div class="grid-item grid-options">
             
+            <label for="beatsbar">Beats/Bar</label>
+            <input type="string" id="beatsbar" name="quantity">
+
+            
+            <br><br>
             
             <label for="subds">Subdivisions:</label>
             <select name="subds" id="sdv">
                 <option value="4">4</option>
                 <option value="8">8</option>
                 <option value="16">16</option>
-                <option value="3">3</option>
-                <option value="6">6</option>
-                <option value="9">9</option>
+                
             </select>
             <br><br>
             
+            <label for="soundtype">Sound:</label>
+            <select name="soundtype" id="soundtype">
+                <option value="Sounds\tick.mp3">Tick</option>
+                <option value="Sounds\acoustic snare.mp3">Acoustic snare</option>
+                <option value="Sounds\snare.mp3">Snare</option>
+                <option value="Sounds\cmaj7.mp3">Cmaj7</option>
+            </select>
+            <br><br>
                 
                 
         </div>
@@ -66,10 +77,13 @@
 
     <script src="./playing funs.js"></script>
     <script src="./validation.js"></script>
-    <script src="./bars.js"></script>
+    <script src="./Bars.js"></script>
     <script src="./AudioAPI2.js"></script>
     <script src="./sounds.js"></script>
     <script src="./style.css"></script>
+    <script src="./debug.js"></script>
+    <script src="./soundpattern.js"></script>
+    
     
 </body>
 

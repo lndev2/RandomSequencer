@@ -8,7 +8,7 @@ let lenBar;
 
 
 
-function playAudio() {
+function playSelected() {
 
     let sound =selectSound()
 
@@ -42,7 +42,7 @@ function playLoop() {
         document.getElementById(ind).className = 'tick-off tick-current'
         
         //playRandom()
-        playAudio()
+        playSelected()
         let previous = ind
         toNext()
         
@@ -59,15 +59,7 @@ function calculateInterval() {
     interval = 1000 / (currentSpeed / 60)
 }
 
-function setSubd (){
-    let subd = document.getElementById('sdv').value
-    console.log('subdivisions',subd)
-    interval = interval / (subd/4)
 
-    
-
-    return subd
-}
 
 
 function restoreFirst() {

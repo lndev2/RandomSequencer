@@ -7,3 +7,11 @@ async function d(){
     await loadAllSounds()
     console.log('buffers',buffers)
 }
+
+
+
+
+//playSound(buffers[3])
+
+
+
