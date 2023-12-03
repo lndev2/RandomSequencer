@@ -2,11 +2,11 @@
 
 
 let sounds = [
-    'Sounds\\tick.mp3', 
+    'Sounds\\tick.mp3',
     'Sounds\\snare.mp3',
-    'Sounds\\low-acoustic-snare-sound-a-key-07-X09.mp3',
-    'Sounds\\stinger-sound-cmaj7-chord-stab-12534.mp3',
-    'Sounds\\antiogmchord-107291.mp3'
+    'Sounds\\acoustic snare.mp3',
+    'Sounds\\cmaj7.mp3',
+    'Sounds\\60s-thin-open-hat-a-key-03-AWJ.wav'
 ]
 
 let buffers = []
@@ -23,13 +23,3 @@ async function loadAllSounds(){
 }
 
 
-
-function selectSound(){
-
-    let sound
-    if (ind%4 == 0){
-        sound = buffers[1]
-    }
-    else{sound = buffers[2]}
-    return sound
-}

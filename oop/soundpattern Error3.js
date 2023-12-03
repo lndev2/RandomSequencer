@@ -102,7 +102,7 @@ class SoundPattern{
 
 function x(){
 
-p1 = new SoundPattern()
+p1 = new SoundPattern('sound1')
 console.log('p1',p1)
 console.log('p1.original_bar_len',p1.original_bar_len)
 console.log('p1.subdivisions',p1.subdivisions)

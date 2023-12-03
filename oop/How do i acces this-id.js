@@ -1,8 +1,8 @@
 
 let nPatternCounter = -1
 let patternList = []
-let nOfBeats = 0
-let subdivisions;
+
+
 
 function setOriginalBar(){
             
@@ -12,7 +12,7 @@ function setOriginalBar(){
 
 function setSubdivisions(){
 
-    subdivisions = document.getElementById('sdv').value 
+    let subdivisions = document.getElementById('sdv').value 
     //interval = interval / (subdivisions/4)
     return subdivisions
 }
@@ -24,17 +24,13 @@ function setSubdBar(startingLen,subdivisions) {
 
 }
 
-function setTotalBeats(add){
+function setTotalBeats(){
 
-    if (add==false){
+    let startingLen = setOriginalBar()
+    let subdivisions = setSubdivisions()
+    let len = setSubdBar(startingLen,subdivisions)
+    return len
 
-        let startingLen = setOriginalBar()
-        setSubdivisions()
-        let len = setSubdBar(startingLen,subdivisions)
-        nOfBeats = len
-    }else{
-        nOfBeats = patternList[0].len
-    }
 }
 
 
@@ -43,10 +39,7 @@ function setTotalBeats(add){
 
 
 class SoundLine{
-    constructor(sound,id){
-        this.id = id  
-        this.sound = sound  
-        this.on = true
+    constructor(sound){    
         this.time = 'duration'
         this.volume = 'volume'
         this.sound = sound
@@ -60,17 +53,17 @@ class SoundPattern{
     
      
     constructor(sound,len){  
-
-        this.id = function (){
-            nPatternCounter ++
-            let id = String.fromCharCode(nPatternCounter+65)
-            return  id
-        }()
         
         this.sound = sound  
         this.len = len
         this.rythm = this.generateRythm()
         this.tab = this.generateBar() 
+        
+        this.id = function (){
+            nPatternCounter ++
+           let id = String.fromCharCode(nPatternCounter+65)
+           return  id
+        }()
     }
 
 
@@ -80,7 +73,7 @@ class SoundPattern{
 
         let rythm = []
         for (let i=0; i<this.len; i++){
-            rythm.push(new SoundLine(this.sound,this.id+i))
+            rythm.push(new SoundLine(this.sound))
         }
         return rythm
     }
@@ -91,7 +84,6 @@ class SoundPattern{
 
         let tab = document.createElement('table')
         tab.className = 'bars'
-        tab.id = this.id
     
         let row = document.createElement('tr')
         tab.appendChild(row)
@@ -101,7 +93,7 @@ class SoundPattern{
     
             let cell = document.createElement('td')
             let button = document.createElement('button')
-            button.id =  this.id + i
+            button.id =  i
             button.className = 'tick-off' 
             button.innerText = i+1
             //bt.onclick ....
@@ -119,7 +111,7 @@ class SoundPattern{
         if(add==false){
             patternList = []
             this.id= 'A'
-            nPatternCounter = 0
+            nPatternCounter = -1
         }
 
         patternList.push(this)
@@ -142,31 +134,26 @@ class SoundPattern{
 
 
 
+function x(){
+
+let len = setTotalBeats()
+
+
+console.log('len',len)
+p1 = new SoundPattern('x',len)
 
 
 
-function generatePattern(add,first=null){
 
-    
-    
 
-    let sound = document.getElementById('soundtype').value
-    setTotalBeats(add)
+console.log('p1',p1)
+console.log('p1.rythm',p1.rythm)
+console.log('p1.tab',p1.tab)
+//barDisplay(p1.tab,true)
+p1.barDisplay(p1.tab,true)
 
-    if (first){
-        nOfBeats = 4
-    }
-    
-    pattern = new SoundPattern(sound, nOfBeats)
-    
-    pattern.storePattern(add)
-    pattern.barDisplay(pattern.tab, add)
-    
 
-    console.log(pattern)
+p1.storePattern(true)
+
+console.log('patternList', patternList)
 }
-
-
-
-
-generatePattern(add=false,first=true)

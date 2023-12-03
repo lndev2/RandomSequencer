@@ -30,7 +30,7 @@ async function loadSound(url) {
 }
  
 
-function playSound(buffer,pausetime) {
+function playSound(buffer,pausetime=null) {
     //console.log('buffer', buffer)
 
     var source = context.createBufferSource();

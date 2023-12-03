@@ -1,9 +1,7 @@
 
 
-let interval = 1000
-let loop;
-let sound = document.getElementById("myAudio");
-let lenBar;
+
+
 
 
 
@@ -30,7 +28,7 @@ function playRandom(){
 
 function toNext() {
 
-    ind = (ind + 1) % lenBar  
+    ind = (ind + 1) % nOfBeats  
     current = bar[ind]
     console.log('Next')
 }

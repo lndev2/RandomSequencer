@@ -8,10 +8,23 @@ async function d(){
     console.log('buffers',buffers)
 }
 
+function d1(){
+    
 
+    initContext()
+    loadAllSounds()
+    console.log('buffers',buffers)
+}
 
 
 //playSound(buffers[3])
 
 
 
+function d1(){
+    
+
+    initContext()
+    loadAllSounds()
+    console.log('buffers',buffers)
+}
