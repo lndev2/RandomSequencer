@@ -3,7 +3,7 @@
 let interval = 1000
 let loop
 let beatIndex = 0
-
+let speed
 
 function loadPlayer(){
 
@@ -92,7 +92,7 @@ function start(){
     restoreFirst()
     
 
-    if (CheckSpeed() == false){
+    if (validateSpeed() == false){
         return
     }
 

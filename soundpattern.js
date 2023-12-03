@@ -4,43 +4,6 @@ let patternList = []
 let nOfBeats = 0
 let subdivisions;
 
-function setOriginalBar(){
-            
-    let startingLen = document.getElementById('beatsbar').value
-    return startingLen
-}
-
-function setSubdivisions(){
-
-    subdivisions = document.getElementById('sdv').value 
-    //interval = interval / (subdivisions/4)
-    return subdivisions
-}
-
-function setSubdBar(startingLen,subdivisions) {
-
-    let len = startingLen * (subdivisions/4)
-    return len
-
-}
-
-function setTotalBeats(add){
-
-    if (add==false){
-
-        let startingLen = setOriginalBar()
-        setSubdivisions()
-        let len = setSubdBar(startingLen,subdivisions)
-        nOfBeats = len
-    }else{
-        nOfBeats = patternList[0].len
-    }
-}
-
-
-
-
-
 
 class SoundLine{
     constructor(sound,id){
@@ -54,10 +17,8 @@ class SoundLine{
 }
 
 
-
 class SoundPattern{
 
-    
      
     constructor(sound,len){  
 
@@ -150,24 +111,38 @@ function storePattern(add,sound){
 
 
 
+function setTotalBeats(add,startingBar,subdivisions){
+
+    if (add==false){
+        //n of beats to play
+        nOfBeats = startingBar * (subdivisions/4)
+    }else{
+        nOfBeats = patternList[0].len
+    }
+}
 
 
-function generatePattern(add,first=null){
 
-    
-
-    let sound = document.getElementById('soundtype').value
-    setTotalBeats(add)
+function generatePattern(add,first=false){
 
     if (first){
-        nOfBeats = 4
-    }
+        var startingBar = 4 
+    }else{ 
+        var startingBar = validateBeats()
+        if(!startingBar && add == false){
+            return
+        }
+        
+    } 
+
+    subdivisions = document.getElementById('sdv').value 
+    let sound = document.getElementById('soundtype').value
+    
+    setTotalBeats(add,startingBar,subdivisions)
+
     
     let pattern = storePattern(add,sound)
-    
     pattern.barDisplay(pattern.tab, add)
-    
-
     console.log(pattern)
 }
 

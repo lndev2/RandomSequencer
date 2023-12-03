@@ -1,29 +1,30 @@
 
 
 
-function valSpeedRe(currentSpeed) {
+function valPositiveN(input) {
 
     let regex = /[1-9]?[0-9]+/;
-    let result = regex.test(currentSpeed);
+    let result = regex.test(input);
     
     if (result){
         return true     
 }
 }
 
-function valSpeedLimits(currentSpeed){
+function valLimits(input, limit){
 
-    if(currentSpeed > 0 && currentSpeed<=240){
+    if(input > 0 && input<=limit){
         return true
     
 
 }
 }
 
-function CheckSpeed() {
+
+function validateSpeed() {
 
     currentSpeed = document.getElementById('quantity').value
-    valid = valSpeedRe(currentSpeed) && valSpeedLimits(currentSpeed)
+    let valid = valPositiveN(currentSpeed) && valLimits(currentSpeed,240)
     
     if(currentSpeed === ""){
         currentSpeed = document.getElementById('speed').innerText
@@ -31,7 +32,7 @@ function CheckSpeed() {
     }
     
     if (!valid){
-        displayError()
+        displaySpeedError()
         return false
     }
 
@@ -40,8 +41,33 @@ function CheckSpeed() {
 
     }
 
-function displayError(){
+function displaySpeedError(){
 
     document.getElementById('error').innerHTML = 'Insert a number between 1 and 240'
+    setTimeout(function () { document.getElementById('error').innerHTML = '' }, 2000)
+}
+
+
+function validateBeats() {
+
+    let startingLen = document.getElementById('beatsbar').value
+    let valid = valPositiveN(startingLen) && valLimits(startingLen,13)
+    
+    /* if(currentSpeed === ""){
+        return false
+    } */
+    
+    if (!valid){
+        displayBeatsError()
+        return false
+    }
+
+    return startingLen
+
+}
+
+function displayBeatsError(){
+
+    document.getElementById('error').innerHTML = 'Insert a number between 1 and 13'
     setTimeout(function () { document.getElementById('error').innerHTML = '' }, 2000)
 }
