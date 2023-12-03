@@ -6,7 +6,7 @@ let sounds = [
     'Sounds\\snare.mp3',
     'Sounds\\acoustic snare.mp3',
     'Sounds\\cmaj7.mp3',
-    'Sounds\\60s-thin-open-hat-a-key-03-AWJ.wav'
+    'Sounds\\Open Hat.mp3'
 ]
 
 let buffers = []

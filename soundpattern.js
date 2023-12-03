@@ -114,17 +114,7 @@ class SoundPattern{
         return tab
     }
 
-    storePattern(add){
-
-        if(add==false){
-            patternList = []
-            this.id= 'A'
-            nPatternCounter = 0
-        }
-
-        patternList.push(this)
-
-    }
+    
 
     barDisplay(tab,add){
 
@@ -141,13 +131,29 @@ class SoundPattern{
 }
 
 
+function storePattern(add,sound){
+
+    if(add==false){
+        patternList = []
+        nPatternCounter = -1
+        pattern = new SoundPattern(sound, nOfBeats)
+        
+    }else{
+        pattern = new SoundPattern(sound, nOfBeats)
+        
+    }
+
+    patternList.push(pattern)
+
+    return pattern
+}
+
 
 
 
 
 function generatePattern(add,first=null){
 
-    
     
 
     let sound = document.getElementById('soundtype').value
@@ -157,9 +163,8 @@ function generatePattern(add,first=null){
         nOfBeats = 4
     }
     
-    pattern = new SoundPattern(sound, nOfBeats)
+    let pattern = storePattern(add,sound)
     
-    pattern.storePattern(add)
     pattern.barDisplay(pattern.tab, add)
     
 
