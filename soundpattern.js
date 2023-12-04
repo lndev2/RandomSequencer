@@ -63,9 +63,9 @@ class SoundPattern{
             let cell = document.createElement('td')
             let button = document.createElement('button')
             button.id =  this.id + i
-            button.className = 'tick-off' 
+            button.className = 'button' 
             button.innerText = i+1
-            //bt.onclick ....
+            button.onclick= function (){switchState(button)}
     
             cell.appendChild(button)
             row.appendChild(cell)

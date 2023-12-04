@@ -32,20 +32,20 @@ function playSoundline(currentSoundLine) {
 
     
 
-    if (currentSoundLine) {
+    if (currentSoundLine.on == true) {
 
         //select buffer
         let bufferToPlay = buffers[sounds.indexOf(currentSoundLine.sound)]
 
         playSound(bufferToPlay);  
-        //document.getElementById(bufferToPlay.id).className = 'tick-off tick-played'  
+          
     }
       
 }
 
 
 
-function playSelected(beatIndex){
+function playCurrentPosition(beatIndex){
 
     for(let j=0; j<patternList.length; j++){
         let currentSoundLine = patternList[j].rythm[beatIndex]
@@ -69,20 +69,30 @@ function toNext() {
 function playLoop() {
     
     loop = setInterval(function () { 
+        let previousClass = saveButtonsClass(beatIndex)
         
-        playSelected(beatIndex)
-        colorCurrentButtons(beatIndex,'tick-off tick-played')
+        
+        playCurrentPosition(beatIndex)
+        
+        
+        colorColumnButtons(beatIndex,'button tick-current')
         
         //playRandom()
         
         let previous = beatIndex
-        toNext()
         
-        setTimeout(function(){colorCurrentButtons(previous, 'tick-off')},interval)
+        toNext()   
+        adjustColor(previousClass)
+        console.log(previousClass)
+        setTimeout(function(){ 
+
+
+            
+        colorColumnButtons(previous, previousClass)},interval)
         
         
-    
-    }, interval)
+        
+     }, interval)
 }
 
 

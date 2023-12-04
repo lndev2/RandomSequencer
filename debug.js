@@ -28,3 +28,7 @@ function d1(){
     loadAllSounds()
     console.log('buffers',buffers)
 }
+
+
+
+let s = patternList[0].rythm[2]

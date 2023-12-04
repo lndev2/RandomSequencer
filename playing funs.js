@@ -1,11 +1,5 @@
 
 
-
-
-
-
-
-
 function playSelected() {
 
     let sound =selectSound()

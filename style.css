@@ -74,7 +74,7 @@
     align-items: center;
 }
 
-.tick-off {
+.button {
 
     width: 70px; /* Set the desired width */
     height: 35px; /* Set the desired height */
@@ -90,4 +90,12 @@
 
 .tick-current {
     background-color: rgb(193, 183, 138)
+}
+
+
+.button-off{
+    
+    background-color: rgb(64, 64, 60)
+    
+
 }
