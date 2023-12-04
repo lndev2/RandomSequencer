@@ -53,10 +53,7 @@ function saveButtonsClass(beatIndex){
         let clName = document.getElementById(buttonId).className
 
         
-        //corrects a bug when adding a new pattern while playing
-        /* if(clName == 'undefined'){
-            clName = 'button'
-        } */
+    
 
 
         columnButtonClass.push(clName)
@@ -68,7 +65,7 @@ function saveButtonsClass(beatIndex){
 
 
 
-function adjustColor(previousClass){
+/* function adjustColor(previousClass){
 
     for (let i=0; i< previousClass.length; i++){
             
@@ -80,4 +77,4 @@ function adjustColor(previousClass){
 
 
 
-}
+} */

@@ -82,12 +82,12 @@ function playLoop() {
         let previous = beatIndex
         
         toNext()   
-        adjustColor(previousClass)
+        //adjustColor(previousClass)
         console.log(previousClass)
+
+        previousClass.push('button')
         setTimeout(function(){ 
 
-
-            
         colorColumnButtons(previous, previousClass)},interval)
         
         

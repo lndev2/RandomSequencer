@@ -12,7 +12,7 @@ class SoundLine{
         this.on = true
         this.time = 'duration'
         this.volume = 'volume'
-        this.sound = sound
+        
 }
 }
 
