@@ -4,7 +4,7 @@
 function colorColumnButtons(beatIndex, style){
     
 
-    // if style is an array the for cycle unpack the array 
+    
     if (typeof style == 'object'){
         var x = 'style[i]'
     }else{
@@ -16,8 +16,6 @@ function colorColumnButtons(beatIndex, style){
         let buttonId = patternList[i].id + beatIndex 
         document.getElementById(buttonId).className = eval(x)
     }
-
-    
 
 
 }
@@ -44,37 +42,44 @@ function switchState(button){
     
 }
 
-function saveButtonsClass(beatIndex){
 
-    let columnButtonClass = []
+
+function getColumn(beatIndex){
+
+    let columnSoundLines = []
 
     for (let i=0; i<patternList.length; i++){
-        let buttonId = patternList[i].id + beatIndex 
-        let clName = document.getElementById(buttonId).className
-
         
-    
-
-
-        columnButtonClass.push(clName)
+        columnSoundLines.push(patternList[i].rythm[beatIndex])
         
     }
-    return columnButtonClass
+
+    return columnSoundLines
+
+
+}
+
+
+function restoreColumnClNames(beatIndex){
+
+    let column = getColumn(beatIndex)
+
+    for (i=0; i<column.length; i++){
+        
+        if (column[i].on){
+            column[i].button.className = 'button'
+                
+        }else{
+            column[i].button.className = 'button button-off'
+        }
+        
+    }
 }
 
 
 
 
-/* function adjustColor(previousClass){
-
-    for (let i=0; i< previousClass.length; i++){
-            
-        if (previousClass[i] == 'undefined'){
-            previousClass[i] = 'button'
-        }
-    }
 
 
 
 
-} */

@@ -67,6 +67,24 @@ function toNext() {
 
 
 
+/* function playLoop() {
+    
+    loop = setInterval(function () { 
+        
+        let previousClass = saveButtonsClass(beatIndex)    
+        previousClass.push('button') 
+        
+        playCurrentPosition(beatIndex)   
+        colorColumnButtons(beatIndex,'button tick-current')     
+        let previous = beatIndex       
+        toNext()          
+        
+        setTimeout(function(){ 
+        colorColumnButtons(previous, previousClass)},interval)
+                        
+    }, interval)
+} */
+
 function playLoop() {
     
     loop = setInterval(function () { 

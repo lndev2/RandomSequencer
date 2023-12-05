@@ -6,20 +6,20 @@ let subdivisions;
 
 
 class SoundLine{
+    
     constructor(sound,id){
         this.id = id  
         this.sound = sound  
         this.on = true
         this.time = 'duration'
-        this.volume = 'volume'
-        
+        this.volume = 'volume'  
+        this.button = null
 }
 }
 
 
 class SoundPattern{
 
-     
     constructor(sound,len){  
 
         this.id = function (){
@@ -67,6 +67,8 @@ class SoundPattern{
             button.innerText = i+1
             button.onclick= function (){switchState(button)}
     
+            this.rythm[i].button = button
+
             cell.appendChild(button)
             row.appendChild(cell)
     
@@ -88,7 +90,6 @@ class SoundPattern{
         document.getElementById('bardiv').appendChild(document.createElement('br'))
         
     }
-
 }
 
 
@@ -128,11 +129,14 @@ function generatePattern(add,first=false){
     if (first){
         var startingBar = 4 
     }else{ 
-        var startingBar = validateBeats()
-        if(!startingBar && add == false){
-            return
+
+        if(!add){
+            
+            var startingBar = validateBeats()
+            if(!startingBar){
+                return
+            }
         }
-        
     } 
 
     subdivisions = document.getElementById('sdv').value 
@@ -140,10 +144,14 @@ function generatePattern(add,first=false){
     
     setTotalBeats(add,startingBar,subdivisions)
 
-    
     let pattern = storePattern(add,sound)
     pattern.barDisplay(pattern.tab, add)
     console.log(pattern)
+
+
+
+    //while playing
+    
 }
 
 
