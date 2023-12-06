@@ -1,10 +1,23 @@
 
 
+function getColumnSlines(beatIndex){
+
+    let columnSoundLines = []
+
+    for (let i=0; i<patternList.length; i++){
+        columnSoundLines.push(patternList[i].rythm[beatIndex])
+    }
+
+    return columnSoundLines
+}
+
+
 
 function colorColumnButtons(beatIndex, style){
-    
 
-    
+    let column = getColumnSlines(beatIndex)
+
+
     if (typeof style == 'object'){
         var x = 'style[i]'
     }else{
@@ -12,14 +25,14 @@ function colorColumnButtons(beatIndex, style){
     }
 
 
-    for (let i=0; i<patternList.length; i++){
-        let buttonId = patternList[i].id + beatIndex 
-        document.getElementById(buttonId).className = eval(x)
+    for (i=0; i<column.length; i++){
+        
+       column[i].button.className = eval(x)
     }
 
 
-}
 
+}
 
 function switchState(button){
     
@@ -44,25 +57,12 @@ function switchState(button){
 
 
 
-function getColumn(beatIndex){
 
-    let columnSoundLines = []
-
-    for (let i=0; i<patternList.length; i++){
-        
-        columnSoundLines.push(patternList[i].rythm[beatIndex])
-        
-    }
-
-    return columnSoundLines
-
-
-}
 
 
 function restoreColumnClNames(beatIndex){
 
-    let column = getColumn(beatIndex)
+    let column = getColumnSlines(beatIndex)
 
     for (i=0; i<column.length; i++){
         
