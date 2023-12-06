@@ -53,9 +53,6 @@ function validateBeats() {
     let startingLen = document.getElementById('beatsbar').value
     let valid = valPositiveN(startingLen) && valLimits(startingLen,13)
     
-    /* if(currentSpeed === ""){
-        return false
-    } */
     
     if (!valid){
         displayBeatsError()
@@ -69,5 +66,27 @@ function validateBeats() {
 function displayBeatsError(){
 
     document.getElementById('error').innerHTML = 'Insert a number between 1 and 13'
+    setTimeout(function () { document.getElementById('error').innerHTML = '' }, 2000)
+}
+
+
+function validatenBars() {
+
+    let nbars = document.getElementById('nBars').value
+    let valid = valPositiveN(nbars) && valLimits(nbars,4)
+    
+    
+    if (!valid){
+        displaynBarsError()
+        return false
+    }
+
+    return nbars
+
+}
+
+function displaynBarsError(){
+
+    document.getElementById('error').innerHTML = 'Insert a number between 1 and 4'
     setTimeout(function () { document.getElementById('error').innerHTML = '' }, 2000)
 }

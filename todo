@@ -4,9 +4,9 @@ Bars:
 
 
 
-    ☐ input number of bars
+    ✔ input number of bars @done(23-12-06 16:58)
     
-    ☐ number of bars * beats/bar = nOfBeats
+    ✔ number of bars * beats/bar = nOfBeats @done(23-12-06 16:58)
 
     ☐ Class Soundpattern(sound,len,nBars)
     

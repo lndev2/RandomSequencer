@@ -2,6 +2,7 @@
 let nPatternCounter = -1
 let patternList = []
 let nOfBeats = 0
+let nBars = 0
 let subdivisions;
 
 
@@ -20,7 +21,7 @@ class SoundLine{
 
 class SoundPattern{
 
-    constructor(sound,len){  
+    constructor(sound,len,nBars){  
 
         this.id = function (){
             nPatternCounter ++
@@ -31,7 +32,11 @@ class SoundPattern{
         this.sound = sound  
         this.len = len
         this.rythm = this.generateRythm()
-        this.tab = this.generateBar() 
+        
+        this.nBars = nBars
+        this.barLen = this.len/nBars
+
+        this.tab = this.generateTab() 
     }
 
 
@@ -47,7 +52,7 @@ class SoundPattern{
     }
 
     
-    generateBar(){
+    generateTab(){
 
 
         let tab = document.createElement('table')
@@ -64,7 +69,7 @@ class SoundPattern{
             let button = document.createElement('button')
             button.id =  this.id + i
             button.className = 'button' 
-            button.innerText = i+1
+            button.innerText = (i % this.barLen)  +1
             button.onclick= function (){switchState(button)}
     
             this.rythm[i].button = button
@@ -93,15 +98,16 @@ class SoundPattern{
 }
 
 
-function storePattern(add,sound){
+function storePattern(add,sound,nBars){
 
     if(add==false){
         patternList = []
         nPatternCounter = -1
-        pattern = new SoundPattern(sound, nOfBeats)
+        pattern = new SoundPattern(sound, nOfBeats,nBars)
         
     }else{
-        pattern = new SoundPattern(sound, nOfBeats)
+        nBars = patternList[0].nBars
+        pattern = new SoundPattern(sound, nOfBeats,nBars)
         
     }
 
@@ -112,14 +118,20 @@ function storePattern(add,sound){
 
 
 
-function setTotalBeats(add,startingBar,subdivisions){
+function setTotalBeats(add,startingBar,subdivisions,nBars){
+
+    // if new pattern is pressed set new nOfBeats else set to the existent
 
     if (add==false){
         //n of beats to play
-        nOfBeats = startingBar * (subdivisions/4)
+        nOfBeats = startingBar * (subdivisions/4) * nBars
     }else{
+        console.log('else')
         nOfBeats = patternList[0].len
+        
     }
+
+    
 }
 
 
@@ -128,10 +140,15 @@ function generatePattern(add,first=false){
 
     if (first){
         var startingBar = 4 
+        var nBars = 1
     }else{ 
 
         if(!add){
             
+            var nBars = validatenBars()
+            if(!nBars){
+                return
+            }
             var startingBar = validateBeats()
             if(!startingBar){
                 return
@@ -142,9 +159,10 @@ function generatePattern(add,first=false){
     subdivisions = document.getElementById('sdv').value 
     let sound = document.getElementById('soundtype').value
     
-    setTotalBeats(add,startingBar,subdivisions)
+    setTotalBeats(add,startingBar,subdivisions,nBars)
 
-    let pattern = storePattern(add,sound)
+    
+    let pattern = storePattern(add,sound,nBars)
     pattern.barDisplay(pattern.tab, add)
     console.log(pattern)
 
