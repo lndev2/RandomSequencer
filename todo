@@ -1,8 +1,18 @@
 
 
-
-- input number of bars 
-
+Bars:
 
 
-+ beat 
+
+    ☐ input number of bars
+    
+    ☐ number of bars * beats/bar = nOfBeats
+
+    ☐ Class Soundpattern(sound,len,nBars)
+    
+        ☐ flat unflat  
+        ☐ display bar numbers correctly
+
+Label:
+Option System:
+Random System:
