@@ -26,10 +26,10 @@
 }
 
 .grid-item{
-    background-color: rgba(7, 22, 108, 0.8);
+    background-color:  rgba(172, 179, 184, 0.8);
     border: 1px solid rgba(0, 0, 0, 0.8);
     font-size: 17px;
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     font-family: Arial, Helvetica, sans-serif;
     
 }

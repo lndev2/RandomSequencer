@@ -11,7 +11,7 @@ class SoundLine{
     constructor(sound,id){
         this.id = id  
         this.sound = sound  
-        this.on = true
+        this.on = false
         this.time = 'duration'
         this.volume = 'volume'  
         this.button = null
@@ -68,7 +68,7 @@ class SoundPattern{
             let cell = document.createElement('td')
             let button = document.createElement('button')
             button.id =  this.id + i
-            button.className = 'button' 
+            button.className = 'button button-off' 
             button.innerText = (i % this.barLen)  +1
             button.onclick= function (){switchState(button)}
     

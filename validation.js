@@ -24,7 +24,7 @@ function valLimits(input, limit){
 function validateSpeed() {
 
     currentSpeed = document.getElementById('quantity').value
-    let valid = valPositiveN(currentSpeed) && valLimits(currentSpeed,240)
+    let valid = valPositiveN(currentSpeed) && valLimits(currentSpeed,300)
     
     if(currentSpeed === ""){
         currentSpeed = document.getElementById('speed').innerText
@@ -43,7 +43,7 @@ function validateSpeed() {
 
 function displaySpeedError(){
 
-    document.getElementById('error').innerHTML = 'Insert a number between 1 and 240'
+    document.getElementById('error').innerHTML = 'Insert a number between 1 and 300'
     setTimeout(function () { document.getElementById('error').innerHTML = '' }, 2000)
 }
 
