@@ -2,10 +2,11 @@
 
 
 let sounds = [
-    'Sounds\\tick.mp3',
-    'Sounds\\snare.mp3',
-    'Sounds\\acoustic snare.mp3',
-    'Sounds\\cmaj7.mp3',
+    'Sounds\\Tick.mp3',
+    'Sounds\\Snare.mp3',
+    'Sounds\\Acoustic snare.mp3',
+    'Sounds\\Cmaj7.mp3',
+    'Sounds\\Tick.mp3',
     'Sounds\\Open Hat.mp3'
 ]
 

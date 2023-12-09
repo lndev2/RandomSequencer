@@ -58,8 +58,23 @@ class SoundPattern{
         let tab = document.createElement('table')
         tab.className = 'bars'
         tab.id = this.id
-    
+        
+
         let row = document.createElement('tr')
+        row.className = 'row-pattern'
+
+        let soundLabel = document.createElement('p')
+        soundLabel.innerHTML= this.sound.slice(7,-4)
+        soundLabel.className = 'sound-label'
+        
+        
+        soundLabel.onclick= function(){selectPattern(this)}
+        soundLabel.addEventListener('click',setLabelColor)
+
+
+        this.label = soundLabel
+        row.appendChild(soundLabel)
+
         tab.appendChild(row)
     
         for (let i=0;i<this.len;i++){
@@ -79,6 +94,11 @@ class SoundPattern{
     
         }    
         
+        let endLabel = document.createElement('p')
+        endLabel.className = 'end-label'
+        row.appendChild(endLabel)
+        
+
         return tab
     }
 
