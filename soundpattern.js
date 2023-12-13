@@ -11,6 +11,9 @@ class SoundLine{
     constructor(sound,id){
         this.id = id  
         this.sound = sound  
+
+        /* this on = false | true | random */
+
         this.on = false
         this.time = 'duration'
         this.volume = 'volume'  
@@ -32,11 +35,12 @@ class SoundPattern{
         this.sound = sound  
         this.len = len
         this.rythm = this.generateRythm()
-        
         this.nBars = nBars
         this.barLen = this.len/nBars
-
         this.tab = this.generateTab() 
+        
+        this.random = false
+        this.selectedIndexes = null
     }
 
 
@@ -66,11 +70,9 @@ class SoundPattern{
         let soundLabel = document.createElement('p')
         soundLabel.innerHTML= this.sound.slice(7,-4)
         soundLabel.className = 'sound-label'
-        
-        
         soundLabel.onclick= function(){selectPattern(this)}
         soundLabel.addEventListener('click',setLabelColor)
-
+        soundLabel.style.cursor = 'pointer'
 
         this.label = soundLabel
         row.appendChild(soundLabel)

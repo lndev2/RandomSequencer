@@ -6,6 +6,7 @@ let beatIndex = 0
 let speed
 
 
+
 function loadPlayer(){
 
     initContext()
@@ -29,18 +30,26 @@ function calculateInterval() {
 
 
 
-function playSoundline(currentSoundLine) {
+function playSoundline(currentSoundPattern,currentSoundLine,isRandom) {
 
     
-
-    if (currentSoundLine.on == true) {
-
-        //select buffer
-        let bufferToPlay = buffers[sounds.indexOf(currentSoundLine.sound)]
-
-        playSound(bufferToPlay);  
-          
+    if (!currentSoundLine.on) {
+        return
     }
+
+    if(isRandom){
+    if (!selectToPlay(currentSoundPattern)) {
+        return
+    }
+    }
+
+
+    //select buffer
+    let bufferToPlay = buffers[sounds.indexOf(currentSoundLine.sound)]
+
+    playSound(bufferToPlay);  
+          
+    
       
 }
 
@@ -49,12 +58,27 @@ function playSoundline(currentSoundLine) {
 function playCurrentPosition(beatIndex){
 
     for(let j=0; j<patternList.length; j++){
+
+        if (patternList[j].random){
+        if (beatIndex == 0 ){
+            patternList[j].selectedIndexes = randomizeBeats(patternList[0],[2,3])
+        }
+        }
+
+        
         let currentSoundLine = patternList[j].rythm[beatIndex]
         //console.log(currentSoundLine)
-        currentButtonId = currentSoundLine.id
+        
+        
          
-        playSoundline(currentSoundLine)
+        playSoundline(patternList[j],currentSoundLine,patternList[j].random)    
+
+        
+
+
     }
+
+    
  
     
 }

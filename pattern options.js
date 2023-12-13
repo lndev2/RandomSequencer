@@ -5,13 +5,13 @@ let selected;
 
 
 
-function selectPattern(soundName) {
+function selectPattern(patternLabel) {
 
-    let patternId = soundName.parentElement.parentElement.id
+    let patternId = patternLabel.parentElement.parentElement.id
     let patternIndex = patternId.charCodeAt(0)-65
     let pattern = patternList[patternIndex]
     selected = pattern
-    soundName.className = 'pattern-label-selected'
+    patternLabel.className = 'pattern-label-selected'
 
     console.log(selected)
 }
@@ -32,5 +32,7 @@ function setLabelColor(){
     }
     }
 }
+
+
 
 
