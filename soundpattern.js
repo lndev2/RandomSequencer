@@ -34,9 +34,9 @@ class SoundPattern{
         
         this.sound = sound  
         this.len = len
-        this.rythm = this.generateRythm()
         this.nBars = nBars
         this.barLen = this.len/nBars
+        this.rythm = this.generateRythm()
         this.tab = this.generateTab() 
         
         this.random = false
@@ -70,8 +70,10 @@ class SoundPattern{
         let soundLabel = document.createElement('p')
         soundLabel.innerHTML= this.sound.slice(7,-4)
         soundLabel.className = 'sound-label'
-        soundLabel.onclick= function(){selectPattern(this)}
-        soundLabel.addEventListener('click',setLabelColor)
+        soundLabel.onclick= function(){clickSoundLabel(this)}
+        soundLabel.addEventListener('click',
+        
+        setLabelColor)
         soundLabel.style.cursor = 'pointer'
 
         this.label = soundLabel

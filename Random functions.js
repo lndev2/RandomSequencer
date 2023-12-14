@@ -1,5 +1,5 @@
 
-let randSelectedList = []
+
 
 
 function randomize(origin, maxN) {

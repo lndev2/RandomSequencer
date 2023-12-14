@@ -32,7 +32,7 @@ function validateSpeed() {
     }
     
     if (!valid){
-        displaySpeedError()
+        displayError('Speed between 1 and 300')
         return false
     }
 
@@ -41,11 +41,6 @@ function validateSpeed() {
 
     }
 
-function displaySpeedError(){
-
-    document.getElementById('error').innerHTML = 'Insert a number between 1 and 300'
-    setTimeout(function () { document.getElementById('error').innerHTML = '' }, 2000)
-}
 
 
 function validateBeats() {
@@ -55,7 +50,7 @@ function validateBeats() {
     
     
     if (!valid){
-        displayBeatsError()
+        displayError('Beats/Bar between 1 and 13')
         return false
     }
 
@@ -63,21 +58,15 @@ function validateBeats() {
 
 }
 
-function displayBeatsError(){
-
-    document.getElementById('error').innerHTML = 'Insert a number between 1 and 13'
-    setTimeout(function () { document.getElementById('error').innerHTML = '' }, 2000)
-}
-
 
 function validatenBars() {
 
     let nbars = document.getElementById('nBars').value
-    let valid = valPositiveN(nbars) && valLimits(nbars,4)
+    let valid = valPositiveN(nbars) && valLimits(nbars,5)
     
     
     if (!valid){
-        displaynBarsError()
+        displayError('Number of Bars between 1 and 5')
         return false
     }
 
@@ -85,8 +74,9 @@ function validatenBars() {
 
 }
 
-function displaynBarsError(){
 
-    document.getElementById('error').innerHTML = 'Insert a number between 1 and 4'
+function displayError(msg){
+
+    document.getElementById('error').innerHTML = msg
     setTimeout(function () { document.getElementById('error').innerHTML = '' }, 2000)
 }
