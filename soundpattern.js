@@ -1,10 +1,9 @@
 
 let nPatternCounter = -1
 let patternList = []
-let nOfBeats = 0
-let nBars = 0
+let nOfBeats;
 let subdivisions;
-
+let bars = [4,4]
 
 class SoundLine{
     
@@ -24,7 +23,7 @@ class SoundLine{
 
 class SoundPattern{
 
-    constructor(sound,len,nBars){  
+    constructor(sound){  
 
         this.id = function (){
             nPatternCounter ++
@@ -33,13 +32,12 @@ class SoundPattern{
         }()
         
         this.sound = sound  
-        this.len = len
-        this.nBars = nBars
-        this.barLen = this.len/nBars
         this.rythm = this.generateRythm()
         this.tab = this.generateTab() 
         
+
         this.random = false
+        // random indexes to play each patterncycle
         this.selectedIndexes = null
     }
 
@@ -49,11 +47,12 @@ class SoundPattern{
     generateRythm(){
 
         let rythm = []
-        for (let i=0; i<this.len; i++){
+        for (let i=0; i<nOfBeats; i++){
             rythm.push(new SoundLine(this.sound,this.id+i))
         }
         return rythm
     }
+
 
     
     generateTab(){
@@ -81,14 +80,14 @@ class SoundPattern{
 
         tab.appendChild(row)
     
-        for (let i=0;i<this.len;i++){
+        for (let i=0;i<nOfBeats;i++){
             
     
             let cell = document.createElement('td')
             let button = document.createElement('button')
             button.id =  this.id + i
             button.className = 'button button-off' 
-            button.innerText = (i % this.barLen)  +1
+            button.innerText = 'todo' //(i % this.bars[0])  +1
             button.onclick= function (){switchState(button)}
     
             this.rythm[i].button = button
@@ -122,16 +121,61 @@ class SoundPattern{
 }
 
 
-function storePattern(add,sound,nBars){
+
+function setBarsEven(){
+
+    bars = []
+
+    let nBars = validatenBars()
+    if(!nBars){
+        return
+    }
+    let barLen = validateBeats()
+    if(!barLen){
+        return
+    }
+
+    console.log('nBars',nBars)
+    console.log('barLen',barLen)
+
+    for (let i=0; i<nBars ; i++){
+        
+        bars.push(barLen)
+    }
+    
+}
+
+function setBarsDiff(){
+
+    bars = []
+
+
+
+
+}
+
+
+
+function setTotalBeats(subdivisions){
+
+    let barsTotLen = bars.reduce( function (a,b){ return Number(a)+Number(b) })
+    console.log(barsTotLen)
+    nOfBeats = barsTotLen  * (subdivisions/4) 
+    console.log('nOfBeats',nOfBeats)
+     
+}
+
+
+function storePattern(add,sound){
 
     if(add==false){
         patternList = []
         nPatternCounter = -1
-        pattern = new SoundPattern(sound, nOfBeats,nBars)
+        pattern = new SoundPattern(sound)
         
     }else{
         
-        pattern = new SoundPattern(sound, nOfBeats,nBars)
+        pattern = new SoundPattern(sound)
         
     }
 
@@ -142,65 +186,25 @@ function storePattern(add,sound,nBars){
 
 
 
-function setTotalBeats(startingBar,subdivisions,nBars){
+function generatePattern(add){
 
-   
-    nOfBeats = startingBar * (subdivisions/4) * nBars
-    
-
-    
-}
-
-
-
-function generatePattern(add,first=false){
+    setBarsEven()
 
     subdivisions = document.getElementById('sdv').value 
-   
-    if (first){
-        var startingBar = 4
-        var nBars = 1
-        nOfBeats = 8
-        nBars = 2
-        subdivisions = 4
-
-    }else{ 
-
-        if(!add){
-            
-            var nBars = validatenBars()
-            if(!nBars){
-                return
-            }
-            var startingBar = validateBeats()
-            if(!startingBar){
-                return
-            }
-            
-            
-            setTotalBeats(startingBar,subdivisions,nBars)
-
-        }else{
-            nOfBeats = patternList[0].len
-            nBars = patternList[0].nBars
-        }
-    } 
-
+    setTotalBeats(subdivisions)
     
     let sound = document.getElementById('soundtype').value
     
-    
-
-    
-    let pattern = storePattern(add,sound,nBars)
+    let pattern = storePattern(add,sound)
     pattern.barDisplay(pattern.tab, add)
     console.log(pattern)
 
-
-    
 }
 
 
 
 
-generatePattern(add=false,first=true)
+
+
+
+generatePattern(add=false)

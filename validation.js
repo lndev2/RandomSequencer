@@ -45,8 +45,8 @@ function validateSpeed() {
 
 function validateBeats() {
 
-    let startingLen = document.getElementById('beatsbar').value
-    let valid = valPositiveN(startingLen) && valLimits(startingLen,13)
+    let barLen = document.getElementById('beatsbar').value
+    let valid = valPositiveN(barLen) && valLimits(barLen,13)
     
     
     if (!valid){
@@ -54,7 +54,7 @@ function validateBeats() {
         return false
     }
 
-    return startingLen
+    return barLen
 
 }
 
