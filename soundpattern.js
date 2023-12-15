@@ -10,9 +10,6 @@ class SoundLine{
     constructor(sound,id){
         this.id = id  
         this.sound = sound  
-
-        /* this on = false | true | random */
-
         this.on = false
         this.time = 'duration'
         this.volume = 'volume'  
@@ -79,15 +76,25 @@ class SoundPattern{
         row.appendChild(soundLabel)
 
         tab.appendChild(row)
-    
+        
+        let barcounter = 0
+        let beatcounter = 0
         for (let i=0;i<nOfBeats;i++){
             
-    
             let cell = document.createElement('td')
+            
             let button = document.createElement('button')
             button.id =  this.id + i
             button.className = 'button button-off' 
-            button.innerText = 'todo' //(i % this.bars[0])  +1
+
+            if(beatcounter == bars[barcounter]*subdivisions/4){
+                beatcounter = 0
+                barcounter ++
+            }
+            button.innerText = beatcounter+1
+            beatcounter ++
+
+
             button.onclick= function (){switchState(button)}
     
             this.rythm[i].button = button

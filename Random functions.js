@@ -34,17 +34,22 @@ function randomizeBeats(soundPattern,totBeats){
 
     let indexes = []
     
-    for ( let i= 0; i< soundPattern.len; i++){
+    for ( let i= 0; i< nOfBeats ; i++){
         indexes.push(i)
     }
-    //console.log(indexes)
+    console.log(indexes)
 
     let finalIndexes = []
 
-    let j = 0
-    for (let i=0; i< soundPattern.nBars;i++){
+    let startindex = 0
+    for (let i=0; i< bars.length;i++){
+
+        console.log(i)
         
-        let barIndexes = indexes.slice(0+j,soundPattern.barLen+j)
+        let endindex = startindex+bars[i]
+        console.log('startindex',startindex)
+        console.log('endindex',endindex)
+        let barIndexes = indexes.slice(startindex,endindex)
         let randBarIndexes = randomize(barIndexes,totBeats[i])
         
         
@@ -52,7 +57,7 @@ function randomizeBeats(soundPattern,totBeats){
             finalIndexes.push(e)
         }
         
-        j = j + soundPattern.barLen
+        startindex = endindex
     }
     
     return finalIndexes
@@ -72,11 +77,11 @@ function selectToPlay(soundPattern){
 
 }
 
-function switchRandom(soundPattern){
+function switchRandom(soundPattern,totBeats){
     
     if(soundPattern.random == false){
         soundPattern.random = true
-        soundPattern.selectedIndexes = randomizeBeats(patternList[0],[2,3])
+        soundPattern.selectedIndexes = randomizeBeats(soundPattern,totBeats)
     }else{
         soundPattern.random = false
         soundPattern.selectedIndexes = null
