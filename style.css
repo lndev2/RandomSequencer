@@ -160,48 +160,8 @@
 
 
 
-
-
-
-
-.evenbars-grid {
-    display: grid;
-    grid-template-columns: 75px auto;
+.barinput {
     
-    
-}
-
-
-.evbinput {
-
-    width: 23px;
+    width: 100px;
     height: 10px;
-
-}
-
-.alignlable1{
-    height: auto;
-    grid-column: 1;
-}
-
-.aligninput1{
-    height: auto;
-    width: 20px;
-    grid-column: 2;
-}
-
-
-
-.init-pattern-container {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: auto auto
-    
-}
-
-.radiobutton-evenbars{
-    
-    
-    grid-column: 1;
-    grid-row: 1
 }

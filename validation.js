@@ -39,38 +39,27 @@ function validateSpeed() {
     document.getElementById('speed').innerText = currentSpeed
 
 
-    }
-
-
-
-function validateBeats() {
-
-    let barLen = document.getElementById('beatsbar').value
-    let valid = valPositiveN(barLen) && valLimits(barLen,13)
-    
-    
-    if (!valid){
-        displayError('Beats/Bar between 1 and 13')
-        return false
-    }
-
-    return barLen
-
 }
 
 
-function validatenBars() {
+function validateBars(splitted) {
 
-    let nbars = document.getElementById('nBars').value
-    let valid = valPositiveN(nbars) && valLimits(nbars,5)
-    
-    
-    if (!valid){
-        displayError('Number of Bars between 1 and 5')
+    if(splitted.length > 8){
+        displayError('N of bars between 1 and 8')
         return false
     }
 
-    return nbars
+    for (let element of splitted){
+        var valid = valPositiveN(element) && valLimits(element,13)
+        if (!valid){
+            displayError('Bars length between 1 and 13')
+            return false
+        }
+    
+    }
+      
+
+    return true
 
 }
 

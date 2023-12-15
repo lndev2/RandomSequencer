@@ -15,7 +15,7 @@
         </div>
         
         <div class="grid-bar">
-            <p>Bars</p>
+            <p id="barsdisplay">Bars 4 4</p>
 
             <div id = 'bardiv' class="tab-container">
                 
@@ -45,23 +45,17 @@
         </div>
         <div class="grid-item grid-options">
             
-            <div class="init-pattern-container">
             
-                <input class='radiobutton-evenbars' type="radio" name="color" value="red">
-                <br><br>
-                <div class='evenbars-grid'>
-                    
-                    
-
-                    <label for="beatsbar" class="alignlabel1">Beats/Bar</label>
-                    <input class="evbinput aligninput1" type="string" id="beatsbar" name="beatsbar">
-        
-                    
-                    <label for="nBars" class="alignlabel1">Number of bars</label>
-                    <input class="evbinput aligninput1" type="string" id="nBars" name="nBars">
-                </div>
             
+                
+            <div class='initbar'>
+                
+                <p>Insert the numbers of beats for each bar separated by spaces </p>
+                <input class="barinput" type="string" id="barinput" name="barinput">
+    
             </div>
+            
+            
             
             <br><br>
 
@@ -85,8 +79,8 @@
             </select>
             <br><br>
 
-            <button id='newpattern' onclick="generatePattern(add=false)">New Pattern</button>
-            <button id='addpattern' onclick="generatePattern(add=true)">Add Pattern</button>
+            <button id='newpattern' onclick="generatePattern(add=false,first=false)">New Pattern</button>
+            <button id='addpattern' onclick="generatePattern(add=true,first=false)">Add Pattern</button>
                 
         </div>
     </div>

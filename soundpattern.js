@@ -122,35 +122,27 @@ class SoundPattern{
 
 
 
-function setBarsEven(){
 
-    bars = []
 
-    let nBars = validatenBars()
-    if(!nBars){
-        return
+function setBars(){
+
+    let barinput = document.getElementById('barinput').value
+    //console.log(barinput)
+    let splitted = barinput.split(' ')
+
+    while (splitted[splitted.length-1] == ''){
+        splitted.pop()
     }
-    let barLen = validateBeats()
-    if(!barLen){
-        return
-    }
 
-    console.log('nBars',nBars)
-    console.log('barLen',barLen)
-
-    for (let i=0; i<nBars ; i++){
-        
-        bars.push(barLen)
+    if(!validateBars(splitted)){
+        return false
+    }else{
+        bars = splitted
+        document.getElementById('barsdisplay').innerHTML = 'Bars '+ bars.join(" ");
     }
     
-}
-
-function setBarsDiff(){
-
-    bars = []
-
-
-
+    return true
+    
 
 }
 
@@ -188,10 +180,17 @@ function storePattern(add,sound){
 
 function generatePattern(add){
 
-    setBarsEven()
+    if(!add){
+
+    if(!first){
+    if(!setBars()){
+        return
+    }
+    }
 
     subdivisions = document.getElementById('sdv').value 
     setTotalBeats(subdivisions)
+    }
     
     let sound = document.getElementById('soundtype').value
     
@@ -203,8 +202,4 @@ function generatePattern(add){
 
 
 
-
-
-
-
-generatePattern(add=false)
+generatePattern(add=false, first = true)
