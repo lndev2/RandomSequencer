@@ -62,7 +62,10 @@ function displayOptions(off = false){
 
     if(off== true){
         let toRemove = document.getElementById('optionDiv') 
+
+        if(toRemove){
         document.getElementById('pattern-options').removeChild(toRemove)
+        }
         return
     }
     generateInterface()
@@ -93,11 +96,32 @@ function generateInterface(){
     }
     optionDiv.appendChild(deleteButton)
 
+    //change sound div
+    let changeSoundDiv = document.createElement('div')
+    changeSoundDiv.id = 'changeSoundDiv'
+
+    let selectSoundLabel = document.createElement('label')
+    selectSoundLabel.for = 'selectsound'
+    selectSoundLabel.innerHTML = 'Change Sound:'
+
+    let selectSound = document.createElement('select')
+
+    for (let i =0; i<sounds.length; i++){
+        let option = document.createElement('option')
+        option.value = sounds[i]
+        option.innerHTML = sounds[i].slice(7,-4)
+        selectSound.appendChild(option)
+    }
+
+    selectSound.onclick = function(){ changeSound(this) }
+
+    changeSoundDiv.append(selectSoundLabel,selectSound)
+    optionDiv.appendChild(changeSoundDiv)
 
 
 
 
-
+    //display
     document.getElementById('pattern-options').replaceChildren(optionDiv)
 
 
@@ -137,6 +161,12 @@ function deletePattern(){
 
     let optionDiv = document.getElementById('optionDiv')
     document.getElementById('pattern-options').removeChild(optionDiv)
-    
+
     selected = null
+}
+
+function changeSound(select){ 
+    selected.sound = select.value
+    selected.label.innerHTML = select.value.slice(7,-4)
+
 }

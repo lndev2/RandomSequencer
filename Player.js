@@ -54,7 +54,7 @@ function playSoundline(currentSoundPattern,currentSoundLine,isRandom) {
 
 
     //select buffer
-    let bufferToPlay = buffers[sounds.indexOf(currentSoundLine.sound)]
+    let bufferToPlay = buffers[sounds.indexOf(currentSoundPattern.sound)]
 
     playSound(bufferToPlay);  
           

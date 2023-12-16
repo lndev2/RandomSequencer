@@ -6,7 +6,6 @@ let sounds = [
     'Sounds\\Snare.mp3',
     'Sounds\\Acoustic snare.mp3',
     'Sounds\\Cmaj7.mp3',
-    'Sounds\\Tick.mp3',
     'Sounds\\Open Hat.mp3'
 ]
 

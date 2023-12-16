@@ -163,7 +163,7 @@ function setBars(){
 function setTotalBeats(subdivisions){
 
     let barsTotLen = bars.reduce( function (a,b){ return Number(a)+Number(b) })
-    console.log(barsTotLen)
+    console.log('barsTotLen',barsTotLen)
     nOfBeats = barsTotLen  * (subdivisions/4) 
     console.log('nOfBeats',nOfBeats)
      
@@ -194,6 +194,8 @@ function generatePattern(add){
 
     if(!add){
 
+        
+
     if(!first){
     if(!setBars()){
         return
@@ -202,6 +204,9 @@ function generatePattern(add){
 
     subdivisions = document.getElementById('sdv').value 
     setTotalBeats(subdivisions)
+
+    displayOptions(off = true)
+
     }
     
     let sound = document.getElementById('soundtype').value
