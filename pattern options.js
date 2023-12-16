@@ -82,26 +82,22 @@ function generateInterface(){
     optionDiv.id = 'optionDiv'
     optionDiv.className = 'pattern-option-interface'
 
+
+
     //title
     let optionTitle = document.createElement('p')
+    optionTitle.className = 'optionTitle'
     optionTitle.innerText = 'Manage Soundpattern '+ selected.id
     optionDiv.appendChild(optionTitle)
 
-    //delete button
-    let deleteButton = document.createElement('button')
-    deleteButton.innerText = 'Delete'
-    deleteButton.onclick = deletePattern
-    if(patternList.length == 1){
-        deleteButton.disabled = true
-    }
-    optionDiv.appendChild(deleteButton)
+    
 
     //change sound div
     let changeSoundDiv = document.createElement('div')
     changeSoundDiv.id = 'changeSoundDiv'
+    changeSoundDiv.className = 'changeSoundDiv optionsDiv'
 
-    let selectSoundLabel = document.createElement('label')
-    selectSoundLabel.for = 'selectsound'
+    let selectSoundLabel = document.createElement('p')
     selectSoundLabel.innerHTML = 'Change Sound:'
 
     let selectSound = document.createElement('select')
@@ -118,6 +114,69 @@ function generateInterface(){
     changeSoundDiv.append(selectSoundLabel,selectSound)
     optionDiv.appendChild(changeSoundDiv)
 
+    //random div
+    let randomDiv = document.createElement('div')
+    randomDiv.id = 'randomDiv'
+    randomDiv.className = 'optionsDiv'
+
+    let title = document.createElement('p')
+    title.innerText = 'Play Random'
+    randomDiv.append(title)
+
+    let randomForm = document.createElement('form')
+    randomForm.id = 'randomForm'
+
+    let labelnames = ['Off','Random Pattern', 'Randomize only selected']
+
+    for (let i=0; i<labelnames.length; i++){
+        let label = document.createElement('label')
+        label.className = 'randomLableSelect'
+
+        let input = document.createElement('input')
+        input.type = 'radio'
+        input.name = 'random'
+        input.value = randomTypes[i]
+        input.onclick = function(){ 
+            
+            console.log(selected.random)
+            switchRandom(selected,input.value)}
+
+        label.append(input)
+
+        let optionTitle = document.createElement('p')
+        optionTitle.innerText = labelnames[i]
+
+        label.append(optionTitle) 
+
+
+        if(labelnames[i] == 'Random Pattern'){
+            let input = document.createElement('input')
+            input.id = 'randomPattern'
+            input.className = 'randomPatternInput'
+            label.append(input)
+        }
+
+        randomForm.append(label)
+        //randomForm.append(document.createElement('br'))
+    }
+
+    
+
+    randomDiv.append(randomForm)
+    optionDiv.appendChild(randomDiv)
+
+
+    //delete button
+    let deleteButtonDiv = document.createElement('div')
+    let deleteButton = document.createElement('button')
+    deleteButton.innerText = 'Delete'
+    deleteButton.className = 'deleteButtonDiv'
+    deleteButton.onclick = deletePattern
+    if(patternList.length == 1){
+        deleteButton.disabled = true
+    }
+    deleteButtonDiv.appendChild(deleteButton)
+    optionDiv.appendChild(deleteButtonDiv)
 
 
 
@@ -165,8 +224,11 @@ function deletePattern(){
     selected = null
 }
 
+
+
 function changeSound(select){ 
     selected.sound = select.value
     selected.label.innerHTML = select.value.slice(7,-4)
 
 }
+

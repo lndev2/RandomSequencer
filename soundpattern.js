@@ -35,6 +35,9 @@ class SoundPattern{
         
 
         this.random = false
+        
+        // limits of random beats each bar
+        this.beatLimits = null
         // random indexes to play each patterncycle
         this.selectedIndexes = null
     }

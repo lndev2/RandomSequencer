@@ -37,12 +37,12 @@ function playSoundline(currentSoundPattern,currentSoundLine,isRandom) {
         return
     }
 
-    if(isRandom == 'SoundPattern' ){
+    if(isRandom == 'randomPattern' ){
         if (!selectToPlay(currentSoundPattern)) {
             return
         }
 
-    }else if(isRandom == 'SoundLine'){
+    }else if(isRandom == 'randomLine'){
         if (currentSoundLine.on == 'random') {
             let n =  Math.round(Math.random())
             if( n == 0 ){
@@ -70,9 +70,9 @@ function playCurrentPosition(beatIndex){
 
 
         //randomize cycle
-        if (patternList[j].random == 'SoundPattern'){
+        if (patternList[j].random == 'randomPattern'){
         if (beatIndex == 0 ){
-            patternList[j].selectedIndexes = randomizeBeats([2,3])
+            patternList[j].selectedIndexes = randomizeBeats(patternList[j].beatLimits)
         }
         }
 

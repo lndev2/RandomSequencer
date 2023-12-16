@@ -78,10 +78,11 @@ function selectToPlay(soundPattern){
 
 }
 
-const randomTypePattern = 'SoundPattern' 
-const randomTypeSingle = 'SoundLine' 
 
-function switchRandom(soundPattern,type,totBeats){
+
+const randomTypes = [false,'randomPattern','randomLine']
+
+function switchRandom(soundPattern,type){
     
 
     if(!type){
@@ -91,8 +92,18 @@ function switchRandom(soundPattern,type,totBeats){
 
         soundPattern.random = type
 
-        if(type==randomTypePattern){
-            soundPattern.selectedIndexes = randomizeBeats(totBeats)
+        if(type == 'randomPattern'){
+            
+            let beatLimits = document.getElementById('randomPattern').value
+
+            beatLimits = beatLimits.split(' ')
+            
+            soundPattern.beatLimits = beatLimits
+            console.log('totbeats',beatLimits)
+
+            
+            soundPattern.selectedIndexes = randomizeBeats(beatLimits)
+            console.log('selectedIndexes',soundPattern.selectedIndexes)
         }
 
     }
