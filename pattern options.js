@@ -3,6 +3,23 @@
 let selected;
 
 
+function retrievesPattern(patternId, remove=false){
+
+    for( let i=0; i<patternList.length; i++){
+        
+
+        if (patternList[i].id == patternId){
+
+            if(remove){
+                patternList.splice(i,1)
+            }else{
+                return patternList[i]
+            }
+
+        } 
+    }
+}
+
 
 function selectPattern(patternLabel, off = false) {
 
@@ -11,13 +28,12 @@ function selectPattern(patternLabel, off = false) {
         return
     }
 
-    let patternId = patternLabel.parentElement.parentElement.id
-    let patternIndex = patternId.charCodeAt(0)-65
-    let pattern = patternList[patternIndex]
-    selected = pattern
+    let patternId = patternLabel.id.slice(1)
+    selected = retrievesPattern(patternId)
     patternLabel.className = 'pattern-label-selected'
+   
 
-    //console.log(selected)
+    console.log(selected) 
 }
 
 
@@ -33,9 +49,11 @@ function setLabelColor(off = false){
         return
     }
     
-    if (selected.label == label){
+    
+    if (selected.label.id == label.id){
         label.className = 'pattern-label-selected'
     }
+    
     }
 }
 
@@ -69,6 +87,7 @@ function generateInterface(){
     //delete button
     let deleteButton = document.createElement('button')
     deleteButton.innerText = 'Delete'
+    deleteButton.onclick = deletePattern
     if(patternList.length == 1){
         deleteButton.disabled = true
     }
@@ -99,10 +118,25 @@ function clickSoundLabel(patternLabel){
     setLabelColor(off)
     displayOptions(off)
 
-    
+    /* if(selected){
     console.log(selected)
     console.log('selected.label',selected.label)
-    
+    } */
 }
 
 
+// interface functionality
+
+
+function deletePattern(){
+
+    let tab = selected.tab
+    document.getElementById('bardiv').removeChild(tab)
+
+    retrievesPattern(tab.id,remove=true)
+
+    let optionDiv = document.getElementById('optionDiv')
+    document.getElementById('pattern-options').removeChild(optionDiv)
+    
+    selected = null
+}

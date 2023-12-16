@@ -28,6 +28,7 @@ class SoundPattern{
             return  id
         }()
         
+
         this.sound = sound  
         this.rythm = this.generateRythm()
         this.tab = this.generateTab() 
@@ -72,6 +73,7 @@ class SoundPattern{
         setLabelColor)
         soundLabel.style.cursor = 'pointer'
 
+        soundLabel.id = 'L'+ this.id
         this.label = soundLabel
         row.appendChild(soundLabel)
 
@@ -122,9 +124,12 @@ class SoundPattern{
             document.getElementById('bardiv').appendChild(tab)
         }
         
-        document.getElementById('bardiv').appendChild(document.createElement('br'))
+        //document.getElementById('bardiv').appendChild(document.createElement('br'))
         
     }
+
+
+    
 }
 
 

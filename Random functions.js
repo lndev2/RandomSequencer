@@ -2,6 +2,7 @@
 
 
 
+
 function randomize(origin, maxN) {
 
 
@@ -29,7 +30,7 @@ function shuffleArray(array) {
 
 
 
-function randomizeBeats(soundPattern,totBeats){
+function randomizeBeats(totBeats){
 
 
     let indexes = []
@@ -37,18 +38,18 @@ function randomizeBeats(soundPattern,totBeats){
     for ( let i= 0; i< nOfBeats ; i++){
         indexes.push(i)
     }
-    console.log(indexes)
+    //console.log(indexes)
 
     let finalIndexes = []
 
     let startindex = 0
     for (let i=0; i< bars.length;i++){
 
-        console.log(i)
+        //console.log(i)
         
         let endindex = startindex+bars[i]
-        console.log('startindex',startindex)
-        console.log('endindex',endindex)
+        //console.log('startindex',startindex)
+        //console.log('endindex',endindex)
         let barIndexes = indexes.slice(startindex,endindex)
         let randBarIndexes = randomize(barIndexes,totBeats[i])
         
@@ -77,18 +78,35 @@ function selectToPlay(soundPattern){
 
 }
 
-function switchRandom(soundPattern,totBeats){
+const randomTypePattern = 'SoundPattern' 
+const randomTypeSingle = 'SoundLine' 
+
+function switchRandom(soundPattern,type,totBeats){
     
-    if(soundPattern.random == false){
-        soundPattern.random = true
-        soundPattern.selectedIndexes = randomizeBeats(soundPattern,totBeats)
-    }else{
+
+    if(!type){
         soundPattern.random = false
         soundPattern.selectedIndexes = null
+    }else{
+
+        soundPattern.random = type
+
+        if(type==randomTypePattern){
+            soundPattern.selectedIndexes = randomizeBeats(totBeats)
+        }
+
     }
+
 }
 
 
- 
 
-//randomizeBeats(patternList[0],[2,3])
+    
+
+
+
+
+
+
+//switchRandom(patternList[0],randomTypePattern,[2,3])
+//switchRandom(patternList[0],randomTypeSingle)

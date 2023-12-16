@@ -38,8 +38,7 @@ function switchState(button){
     
     
     let patternId = button.id.slice(0,1)
-    let patternIndex = patternId.charCodeAt(0)-65
-    let pattern = patternList[patternIndex]
+    let pattern = retrievesPattern(patternId)
     let soundlineIndex = button.id.slice(1)
     let soundline = pattern.rythm[soundlineIndex]
     

@@ -37,10 +37,19 @@ function playSoundline(currentSoundPattern,currentSoundLine,isRandom) {
         return
     }
 
-    if(isRandom){
-    if (!selectToPlay(currentSoundPattern)) {
-        return
-    }
+    if(isRandom == 'SoundPattern' ){
+        if (!selectToPlay(currentSoundPattern)) {
+            return
+        }
+
+    }else if(isRandom == 'SoundLine'){
+        if (currentSoundLine.on == 'random') {
+            let n =  Math.round(Math.random())
+            if( n == 0 ){
+                return
+            }
+        }
+        
     }
 
 
@@ -52,16 +61,18 @@ function playSoundline(currentSoundPattern,currentSoundLine,isRandom) {
     
       
 }
-
-
+//patternList[0].random = 'single'
+//patternList[0].rythm[0].on = 'random'
 
 function playCurrentPosition(beatIndex){
 
     for(let j=0; j<patternList.length; j++){
 
-        if (patternList[j].random){
+
+        //randomize cycle
+        if (patternList[j].random == 'SoundPattern'){
         if (beatIndex == 0 ){
-            patternList[j].selectedIndexes = randomizeBeats(patternList[0],[2,3])
+            patternList[j].selectedIndexes = randomizeBeats([2,3])
         }
         }
 
