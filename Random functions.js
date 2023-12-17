@@ -21,21 +21,14 @@ function randomize(origin, maxN) {
 }
 
 
-function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-}
 
 
-
-function randomizeBeats(totBeats){
+function randomizeBeats(totBeats) {
 
 
     let indexes = []
-    
-    for ( let i= 0; i< nOfBeats ; i++){
+
+    for (let i = 0; i < nOfBeats; i++) {
         indexes.push(i)
     }
     //console.log(indexes)
@@ -43,24 +36,24 @@ function randomizeBeats(totBeats){
     let finalIndexes = []
 
     let startindex = 0
-    for (let i=0; i< bars.length;i++){
+    for (let i = 0; i < bars.length; i++) {
 
         //console.log(i)
-        
-        let endindex = startindex+bars[i]
+
+        let endindex = startindex + bars[i]
         //console.log('startindex',startindex)
         //console.log('endindex',endindex)
-        let barIndexes = indexes.slice(startindex,endindex)
-        let randBarIndexes = randomize(barIndexes,totBeats[i])
-        
-        
-        for (let e of randBarIndexes){
+        let barIndexes = indexes.slice(startindex, endindex)
+        let randBarIndexes = randomize(barIndexes, totBeats[i])
+
+
+        for (let e of randBarIndexes) {
             finalIndexes.push(e)
         }
-        
+
         startindex = endindex
     }
-    
+
     return finalIndexes
 
 
@@ -68,42 +61,45 @@ function randomizeBeats(totBeats){
 
 
 
-function selectToPlay(soundPattern){
+function selectToPlay(soundPattern) {
 
-    
-    if (soundPattern.selectedIndexes.includes(beatIndex)){
+
+    if (soundPattern.selectedIndexes.includes(beatIndex)) {
         return true
-    } 
+    }
 
 
 }
 
 
+//random types selections
+const randomTypes = [false, 'randomPattern', 'randomLine']
 
-const randomTypes = [false,'randomPattern','randomLine']
 
-function switchRandom(soundPattern,type){
-    
 
-    if(!type){
+
+function switchRandom(soundPattern, type) {
+
+
+    if (!type) {
         soundPattern.random = false
         soundPattern.selectedIndexes = null
-    }else{
+    } else {
 
         soundPattern.random = type
 
-        if(type == 'randomPattern'){
-            
+        if (type == 'randomPattern') {
+
             let beatLimits = document.getElementById('randomPattern').value
 
             beatLimits = beatLimits.split(' ')
-            
-            soundPattern.beatLimits = beatLimits
-            console.log('totbeats',beatLimits)
 
-            
+            soundPattern.beatLimits = beatLimits
+            console.log('totbeats', beatLimits)
+
+
             soundPattern.selectedIndexes = randomizeBeats(beatLimits)
-            console.log('selectedIndexes',soundPattern.selectedIndexes)
+            console.log('selectedIndexes', soundPattern.selectedIndexes)
         }
 
     }
@@ -112,7 +108,7 @@ function switchRandom(soundPattern,type){
 
 
 
-    
+
 
 
 

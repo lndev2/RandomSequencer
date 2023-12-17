@@ -111,7 +111,23 @@ function generateInterface(){
 
     selectSound.onclick = function(){ changeSound(this) }
 
-    changeSoundDiv.append(selectSoundLabel,selectSound)
+    //download sound
+    let dldSoundInput = document.createElement('div')
+    dldSoundInput.className = 'downloadSoundInput'
+    
+    let downloadSoundLabel = document.createElement('p')
+    downloadSoundLabel.innerHTML = 'Download Sound from URL'
+
+    let soundURL = document.createElement('input')
+    let downloadBtn = document.createElement('button')
+    downloadBtn.className = 'downloadBtn'
+    downloadBtn.innerText = 'Download'
+
+    dldSoundInput.append(soundURL,downloadBtn)
+
+    changeSoundDiv.append(selectSoundLabel,selectSound,downloadSoundLabel,dldSoundInput)
+
+
     optionDiv.appendChild(changeSoundDiv)
 
     //random div
@@ -232,3 +248,8 @@ function changeSound(select){
 
 }
 
+
+function downloadSound(){
+
+    
+}
