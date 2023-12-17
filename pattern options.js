@@ -142,7 +142,7 @@ function generateInterface(){
     let randomForm = document.createElement('form')
     randomForm.id = 'randomForm'
 
-    let labelnames = ['Off','Random Pattern', 'Randomize only selected']
+    let labelnames = ['Off','Random Bar Pattern', 'Randomize if play open beats']
 
     for (let i=0; i<labelnames.length; i++){
         let label = document.createElement('label')
@@ -154,9 +154,12 @@ function generateInterface(){
         input.value = randomTypes[i]
         input.onclick = function(){ 
             
-            console.log(selected.random)
-            switchRandom(selected,input.value)}
+            
+            switchRandom(selected,input.value)
+            console.log('selected.random',selected.random)
+        }
 
+        
         label.append(input)
 
         let optionTitle = document.createElement('p')
@@ -165,7 +168,7 @@ function generateInterface(){
         label.append(optionTitle) 
 
 
-        if(labelnames[i] == 'Random Pattern'){
+        if(labelnames[i] == 'Random Bar Pattern'){
             let input = document.createElement('input')
             input.id = 'randomBarPattern'
             input.className = 'randomPatternInput'
@@ -247,6 +250,13 @@ function changeSound(select){
     selected.label.innerHTML = select.value.slice(7,-4)
 
 }
+
+
+
+
+    
+
+
 
 
 function downloadSound(){

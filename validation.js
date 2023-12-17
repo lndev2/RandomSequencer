@@ -42,17 +42,25 @@ function validateSpeed() {
 }
 
 
-function validateBars(splitted) {
 
-    if(splitted.length > 8){
-        displayError('N of bars between 1 and 8')
+function validateSplitted(splitted,lenLimit,valLimit,lenErrMsg,valLerrMsg,barlimit=false){
+
+
+
+    if(splitted.length > lenLimit){
+        displayError(lenErrMsg)
         return false
     }
 
-    for (let element of splitted){
-        var valid = valPositiveN(element) && valLimits(element,13)
+    for (let i = 0; i<splitted.length; i++){
+
+        //maximum bar length
+        if(barlimit){ valLimit = bars((i)) }
+
+
+        var valid = valPositiveN(splitted[i]) && valLimits(splitted[i],valLimit)
         if (!valid){
-            displayError('Bars length between 1 and 13')
+            displayError(valLerrMsg)
             return false
         }
     
@@ -61,7 +69,10 @@ function validateBars(splitted) {
 
     return true
 
+
 }
+
+
 
 
 function displayError(msg){

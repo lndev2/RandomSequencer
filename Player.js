@@ -38,17 +38,18 @@ function playSoundline(currentSoundPattern,currentSoundLine,isRandom) {
     }
 
     if(isRandom == 'randomBarPattern' ){
+        
         if (!selectToPlay(currentSoundPattern)) {
             return
         }
 
     }else if(isRandom == 'randomLine'){
-        if (currentSoundLine.on == 'random') {
-            let n =  Math.round(Math.random())
-            if( n == 0 ){
-                return
-            }
+        
+        let n =  Math.round(Math.random())
+        if( n == 0 ){
+            return
         }
+        
         
     }
 

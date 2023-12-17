@@ -31,6 +31,10 @@ class SoundPattern{
 
         this.sound = sound  
         this.rythm = this.generateRythm()
+
+
+        this.label = null
+        this.endLabel = null
         this.tab = this.generateTab() 
         
 
@@ -111,6 +115,8 @@ class SoundPattern{
         
         let endLabel = document.createElement('p')
         endLabel.className = 'end-label'
+        endLabel.id =  this.id + 'endLable' 
+        this.endLabel = endLabel
         row.appendChild(endLabel)
         
 
@@ -149,7 +155,14 @@ function setBars(){
         splitted.pop()
     }
 
-    if(!validateBars(splitted)){
+    if(!validateSplitted(
+        
+        splitted, 8 , 13, 
+        'N of bars between 1 and 8',
+        'Bars length between 1 and 13', 
+        false
+        
+        )){
         return false
     }else{
         bars = splitted

@@ -33,17 +33,18 @@
     width: 150px;
     height: 25px;
     margin: 1%;
-    background-color: rgba(172, 179, 184, 0.8) ;
-    font-size: 20px;
+    background-color: rgba(239, 241, 242, 0.8) ;
+    font-size: 15px;
     color: black;
     border-radius: 20px;
+    text-align: center;
     
 }
 
 .end-label{
     width: 150px;
     height: 20px;
-    color: black;
+    color: rgb(255, 255, 255);
     margin: 1%;
 }
 
@@ -54,10 +55,11 @@
     width: 150px;
     height: 25px;
     margin: 1%;
-    background-color: rgba(28, 154, 183, 0.8) ;
-    color: rgb(255, 255, 255);
-    font-size: 20px;
+    background-color: rgb(157, 237, 158) ;
+    font-size: 15px;
+    color: black;
     border-radius: 20px;
+    text-align: center;
 
 
 }

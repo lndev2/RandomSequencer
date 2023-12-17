@@ -73,7 +73,7 @@ function selectToPlay(soundPattern) {
 
 
 //random types selections
-const randomTypes = [false, 'randomBarPattern', 'randomLine']
+const randomTypes = ['off', 'randomBarPattern', 'randomLine']
 
 
 
@@ -83,6 +83,16 @@ function randomBarPattern(soundPattern){
     let beatLimits = document.getElementById('randomBarPattern').value
 
     beatLimits = beatLimits.split(' ')
+    while (beatLimits[beatLimits.length-1] == ''){
+        beatLimits.pop()
+    }
+    if(!validateSplitted(
+
+        beatLimits, bars.length, null, 'total bars'+' '+bars.length, 'BeatsPerBar Exceded'
+
+    )){return}
+
+    
 
     soundPattern.beatLimits = beatLimits
     console.log('totbeats', beatLimits)
@@ -91,6 +101,8 @@ function randomBarPattern(soundPattern){
     soundPattern.selectedIndexes = randomizeBeats(beatLimits)
     console.log('selectedIndexes', soundPattern.selectedIndexes)
 
+    //display 
+    selected.endLabel.innerText = 'Rbars' + ' ' + beatLimits 
     
 }
 
@@ -98,10 +110,16 @@ function randomBarPattern(soundPattern){
 
 function switchRandom(soundPattern, type) {
 
+    console.log('type',type)
 
-    if (!type) {
+
+    if (type =='off') {
+        console.log('innnnn')
         soundPattern.random = false
         soundPattern.selectedIndexes = null
+
+        console.log(selected.endLabel.innerText)
+        selected.endLabel.innerText = null
     } else {
 
         soundPattern.random = type
