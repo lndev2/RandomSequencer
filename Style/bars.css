@@ -1,0 +1,74 @@
+
+
+
+
+
+
+.tab-container {
+    
+    display: grid; 
+    place-items: center;
+    padding: 10px ; /* Add some padding for better visibility */
+    background-color:  rgba(9, 25, 116, 0.8); /* Example background color */
+    color: #ffffff; /* Example text color */
+    text-decoration: none; /* Remove the default underline */
+    border-radius: 12px; /* Optional: Add rounded corners */
+}
+
+.bars{
+    
+    align-items: center;
+}
+
+.row-pattern {
+    display: inline-flex;
+    align-items: center;
+    align-content: center;
+
+}
+
+
+
+.sound-label{
+    width: 150px;
+    height: 25px;
+    margin: 1%;
+    background-color: rgba(172, 179, 184, 0.8) ;
+    font-size: 20px;
+    color: black;
+    border-radius: 20px;
+    
+}
+
+.end-label{
+    width: 150px;
+    height: 20px;
+    color: black;
+    margin: 1%;
+}
+
+
+
+.pattern-label-selected {
+
+    width: 150px;
+    height: 25px;
+    margin: 1%;
+    background-color: rgba(28, 154, 183, 0.8) ;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    border-radius: 20px;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+  

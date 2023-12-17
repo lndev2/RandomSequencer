@@ -167,7 +167,7 @@ function generateInterface(){
 
         if(labelnames[i] == 'Random Pattern'){
             let input = document.createElement('input')
-            input.id = 'randomPattern'
+            input.id = 'randomBarPattern'
             input.className = 'randomPatternInput'
             label.append(input)
         }

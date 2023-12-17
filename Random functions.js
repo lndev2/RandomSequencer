@@ -73,8 +73,26 @@ function selectToPlay(soundPattern) {
 
 
 //random types selections
-const randomTypes = [false, 'randomPattern', 'randomLine']
+const randomTypes = [false, 'randomBarPattern', 'randomLine']
 
+
+
+function randomBarPattern(soundPattern){
+
+
+    let beatLimits = document.getElementById('randomBarPattern').value
+
+    beatLimits = beatLimits.split(' ')
+
+    soundPattern.beatLimits = beatLimits
+    console.log('totbeats', beatLimits)
+
+
+    soundPattern.selectedIndexes = randomizeBeats(beatLimits)
+    console.log('selectedIndexes', soundPattern.selectedIndexes)
+
+    
+}
 
 
 
@@ -88,18 +106,9 @@ function switchRandom(soundPattern, type) {
 
         soundPattern.random = type
 
-        if (type == 'randomPattern') {
+        if (type == 'randomBarPattern') {
 
-            let beatLimits = document.getElementById('randomPattern').value
-
-            beatLimits = beatLimits.split(' ')
-
-            soundPattern.beatLimits = beatLimits
-            console.log('totbeats', beatLimits)
-
-
-            soundPattern.selectedIndexes = randomizeBeats(beatLimits)
-            console.log('selectedIndexes', soundPattern.selectedIndexes)
+            randomBarPattern(soundPattern)
         }
 
     }

@@ -1,0 +1,48 @@
+
+
+
+
+
+
+
+
+
+
+.button {
+
+    width: 37px; /* Set the desired width */
+    height: 37px; /* Set the desired height */
+    font-size: 16px;
+    color: rgba(19, 18, 17, 0.8)
+
+
+}
+
+.tick-played {
+    background-color: rgb(16, 198, 104)
+}
+
+.tick-current {
+    
+    background-color: rgb(238, 176, 59)
+}
+
+
+.button-off{
+    background-color: rgb(112, 112, 112)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
