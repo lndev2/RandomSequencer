@@ -39,8 +39,10 @@ class SoundPattern{
         
 
         this.random = false
-        
-        // limits of random beats each bar
+
+        //intervals of indexes to randomize
+        this.intervals = null
+        // limits of random beats each iterval
         this.beatLimits = null
         // random indexes to play each patterncycle
         this.selectedIndexes = null
@@ -147,17 +149,14 @@ class SoundPattern{
 
 function setBars(){
 
-    let barinput = document.getElementById('barinput').value
-    //console.log(barinput)
-    let splitted = barinput.split(' ')
+    
 
-    while (splitted[splitted.length-1] == ''){
-        splitted.pop()
-    }
+    let barinput = splitAndClean(document.getElementById('barinput').value)
 
+    
     if(!validateSplitted(
         
-        splitted, 8 , 13, 
+        barinput, 8 , 13, 
         'N of bars between 1 and 8',
         'Bars length between 1 and 13', 
         false
@@ -165,7 +164,7 @@ function setBars(){
         )){
         return false
     }else{
-        bars = splitted
+        bars = barinput
         document.getElementById('barsdisplay').innerHTML = 'Bars '+ bars.join(" ");
     }
     

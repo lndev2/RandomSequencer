@@ -39,7 +39,7 @@ function playSoundline(currentSoundPattern,currentSoundLine,isRandom) {
 
     if(isRandom == 'randomBarPattern' ){
         
-        if (!selectToPlay(currentSoundPattern)) {
+        if (!selectIfPlay(currentSoundPattern)) {
             return
         }
 
@@ -87,12 +87,7 @@ function playCurrentPosition(beatIndex){
 
         
 
-
-    }
-
-    
- 
-    
+    }  
 }
 
 
