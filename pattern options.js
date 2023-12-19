@@ -173,6 +173,12 @@ function generateInterface(){
             input.id = 'randomBarPattern'
             input.className = 'randomPatternInput'
             label.append(input)
+
+            let instructions = document.createElement('p')
+            instructions.innerText = 'Insert beat number limits for each bar separated by spaces'
+            instructions.id = 'randomBarPatternInstr'
+            instructions.className = 'randomBarPatternInstr'
+            label.append(instructions)
         }
 
         randomForm.append(label)

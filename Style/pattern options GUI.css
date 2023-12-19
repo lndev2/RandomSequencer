@@ -5,7 +5,7 @@
     display: grid;
     grid-template-columns:auto;
     grid-template-rows: auto auto auto;
-    background-color: beige;
+    background-color: rgba(113, 150, 167, 0.512);
     text-align: left;
     padding: 20px;
 }
@@ -17,19 +17,6 @@
     border-color: #000000;  /* You can set the color of the border */
   }
 
-.randomLableSelect{
-
-    display: grid;
-    grid-template-columns: min-content max-content min-content;
-
-}
-
-.randomPatternInput{
-    grid-column: 3;
-    height: 20px;
-    vertical-align:middle;
-    margin: 5%;
-}
 
 .changeSoundDiv{
     grid-column: 1;

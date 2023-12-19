@@ -60,7 +60,7 @@ function selectBarsIntervals(){
     for (let i = 0; i < bars.length; i++) {
 
         //console.log(startindex)
-        let endindex = startindex + bars[i]
+        let endindex = startindex + bars[i]*(subdivisions/4)
         var barIndexes = indexes.slice(startindex, endindex)
         
         current=[...barIndexes]
@@ -155,7 +155,7 @@ function selectIfPlay(soundPattern) {
 const randomTypes = ['off', 'randomBarPattern', 'randomLine']
 
 
-
+// randomBarPattern
 function randomBarPattern(soundPattern){
 
 
@@ -163,26 +163,42 @@ function randomBarPattern(soundPattern){
 
     if(!validateSplitted(
 
-        beatLimits, bars.length, null, 
+        beatLimits, 
+        bars.length, 
+        null, 
         'total bars'+' '+bars.length, 
-        'BeatsPerBar Exceded', 
+        'Insert numbers between 0 and each bar length', 
         true
 
     )){return}
 
 
     soundPattern.beatLimits = beatLimits
-    console.log('totbeats', beatLimits)
+    console.log('beatLimits', beatLimits)
+    
+    
 
+    soundPattern.selectedIndexes = selectedIndexesCycle(soundPattern,beatLimits)
+    console.log('soundPattern.selectedIndexes',soundPattern.selectedIndexes)
 
-    soundPattern.selectedIndexes = randomizeBeats(beatLimits)
-    console.log('selectedIndexes', soundPattern.selectedIndexes)
 
     //display 
     selected.endLabel.innerText = 'Rbars' + ' ' + beatLimits 
     
 }
 
+function selectedIndexesCycle(soundPattern){
+    
+    let barsIntervals = selectBarsIntervals()
+    //console.log('barsIntervals', barsIntervals)
+    let selectedIndexes = randomizeBeats(barsIntervals, soundPattern.beatLimits)
+
+    return selectedIndexes
+}
+
+
+
+// randomLine
 function randomLine(){
 
     //display 
@@ -190,13 +206,16 @@ function randomLine(){
 
 }
 
+
+
+//radiobutton
 function switchRandom(soundPattern, type) {
 
     console.log('type',type)
 
 
     if (type =='off') {
-        console.log('innnnn')
+        console.log('off')
         soundPattern.random = false
         soundPattern.selectedIndexes = null
 

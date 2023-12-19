@@ -37,6 +37,7 @@ function playSoundline(currentSoundPattern,currentSoundLine,isRandom) {
         return
     }
 
+    //Randomizing options
     if(isRandom == 'randomBarPattern' ){
         
         if (!selectIfPlay(currentSoundPattern)) {
@@ -73,7 +74,11 @@ function playCurrentPosition(beatIndex){
         //randomize cycle
         if (patternList[j].random == 'randomBarPattern'){
         if (beatIndex == 0 ){
-            patternList[j].selectedIndexes = randomizeBeats(patternList[j].beatLimits)
+
+
+
+            patternList[j].selectedIndexes = selectedIndexesCycle(patternList[j])
+            
         }
         }
 

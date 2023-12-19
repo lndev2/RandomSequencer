@@ -45,9 +45,9 @@ function validateSpeed() {
 function splitAndClean(DOMinput){ //space separated values
 
     let splitted = DOMinput.split(' ')
-    console.log(splitted)
+    //console.log(splitted)
     let converted = splitted.map( function(x){ return Number(x)})
-    console.log(converted)
+    //console.log(converted)
     while (converted[converted.length-1] == ''){
         converted.pop()
     }
@@ -68,7 +68,7 @@ function validateSplitted(splitted,lenLimit,valLimit,lenErrMsg,valLerrMsg,barlim
     for (let i = 0; i<splitted.length; i++){
 
         //maximum bar length
-        if(barlimit){ valLimit = bars[i] }
+        if(barlimit){ valLimit = bars[i]*(subdivisions/4) }
 
 
         var valid = valPositiveN(splitted[i]) && valLimits(splitted[i],valLimit)

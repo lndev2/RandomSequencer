@@ -13,7 +13,15 @@ Bars:
         
         ✔ display bar numbers correctly @done(23-12-07 00:14)
 
-Label:
+_-----------------------------------------
 
-Option System:
+
+
+
 Random System:
+
+    ☐ Button new color
+    ☐ Button state 
+    ☐ New selectIntervals()
+    ☐ New randomIntervalPattern() (Random type Selection)
+ 
