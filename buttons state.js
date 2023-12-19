@@ -47,7 +47,7 @@ function switchState(button){
         button.className = 'button button-off'
         soundline.on = false
     }else{
-        button.className = 'button'
+        button.className = 'button button-on'
         soundline.on = true
     }
 
@@ -59,26 +59,46 @@ function switchState(button){
 
 
 
-function restoreColumnClNames(beatIndex){
+function ColumnClNames(beatIndex,option){
 
     let column = getColumnSlines(beatIndex)
 
+    let columnClassNames = []
     for (i=0; i<column.length; i++){
         
+
+        if(option=='restore'){
         if (column[i].on){
-            column[i].button.className = 'button'
-                
+            column[i].button.className = 'button'       
         }else{
-            column[i].button.className = 'button button-off'
+            column[i].button.className = 'button button-off'            
         }
-        
+
+
+
+        }else if(option=='retrieves'){
+            if (column[i].on){       
+                columnClassNames.push('button button-on')                   
+            }else{
+                columnClassNames.push('button button-off')
+            }
+        }
     }
+
+    return columnClassNames
 }
 
 
 
 
+function addClassNamesArray(columnClassNames,addClassName){
+
+    
+    let addedClass = columnClassNames.map( function(className){ return className + ' '+ addClassName })
+    return addedClass
+
+}
 
 
 
-
+addClassNamesArray(ColumnClNames(beatIndex,'retrieves'),'tick-current')

@@ -109,11 +109,13 @@ function playLoop() {
         
         
         playCurrentPosition(beatIndex)   
-        colorColumnButtons(beatIndex,'button tick-current')     
+        
+        let soundClassNames =addClassNamesArray(ColumnClNames(beatIndex,'retrieves'),'tick-current')
+        colorColumnButtons(beatIndex,soundClassNames)     
         let previous = beatIndex       
         toNext()          
         
-        setTimeout(function(){ restoreColumnClNames(previous)
+        setTimeout(function(){ColumnClNames(previous,'restore')
         },interval)
         
         
