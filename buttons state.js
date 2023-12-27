@@ -101,4 +101,3 @@ function addClassNamesArray(columnClassNames,addClassName){
 
 
 
-addClassNamesArray(ColumnClNames(beatIndex,'retrieves'),'tick-current')
