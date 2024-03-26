@@ -1,1 +1,1 @@
-# Random Metronome
+# Random Sequencer
